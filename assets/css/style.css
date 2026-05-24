@@ -1,0 +1,293 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Sayfa Yapısı */
+
+html,
+body{
+    min-height:100vh;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+
+    font-family:'Segoe UI', Arial, sans-serif;
+
+    background:linear-gradient(
+        180deg,
+        #faf7f2 0%,
+        #f5efe6 100%
+    );
+}
+
+/* Linkler */
+
+a{
+    text-decoration:none;
+}
+
+/* Listeler */
+
+ul{
+    list-style:none;
+    padding-left:0;
+    margin-bottom:0;
+}
+
+/* Navbar */
+
+.navbar-brand{
+    font-weight:700;
+    letter-spacing:2px;
+}
+.navbar{
+    background:white !important;
+    box-shadow:0 4px 20px rgba(0,0,0,.05);
+    border-bottom:1px solid #f0f0f0;
+}
+
+/* Butonlar */
+.btn-dark{
+    background:#c79b2c;
+    border:none;
+    color:white;
+    transition:.3s;
+}
+.btn-dark:hover{
+    background:#ad8521;
+}
+
+.btn-danger,
+.btn-outline-danger{
+    transition:.3s;
+}
+
+.btn-danger:hover,
+.btn-outline-danger:hover{
+    transform:scale(1.03);
+}
+
+/* Arama Sonuçları */
+
+.arama-item{
+    transition:.2s;
+}
+
+.arama-item:hover{
+    background:#f1f5f9;
+}
+#aramaSonuc{
+    border-radius:18px;
+    overflow:hidden;
+}
+
+/* Kartlar */
+
+.card{
+    border:none;
+    border-radius:22px;
+    background:white;
+    transition:.3s;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.06);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.12);
+}
+
+/* Ürün Resimleri */
+
+.card-img-top{
+    border-radius:18px 18px 0 0;
+}
+
+/* Footer Ana Bölüm */
+
+/* Sayfa Yapısı */
+
+html,
+body{
+    min-height:100vh;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+}
+
+/* Ana Sayfa Footer */
+
+.footer-main{
+
+    margin-top:60px;
+
+    padding:40px 0;
+
+    border-top:1px solid #ddd;
+
+}
+
+.footer-logo{
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
+
+.footer-text{
+
+    font-size:18px;
+
+    color:#555;
+
+}
+
+.footer-social{
+
+    font-size:28px;
+
+}
+
+
+
+
+@media(max-width:768px){
+
+    .footer-logo{
+        font-size:28px;
+    }
+
+    .footer-social{
+        margin-top:10px;
+    }
+
+    .footer-social a{
+        margin:0 8px;
+        font-size:26px;
+    }
+
+    .footer-contact,
+    .footer-social{
+        text-align:center;
+    }
+
+}
+.site-content{
+    flex:1;
+}
+
+.footer-bottom{
+     background:#111827 !important;
+    color:white !important;
+    text-align:center;
+    padding:15px;
+    width:100%;
+}
+/* Hamburger Menü */
+
+.offcanvas{
+    border-radius:0 20px 20px 0;
+}
+
+.accordion-item{
+    border:none;
+    margin-bottom:12px;
+    background:transparent;
+}
+
+.accordion-button{
+    border-radius:16px !important;
+    font-weight:600;
+    background:#f8f9fa;
+    box-shadow:none !important;
+}
+
+.accordion-button:not(.collapsed){
+    background:#d9a514;
+    color:white;
+}
+
+.accordion-button:focus{
+    box-shadow:none;
+}
+
+.list-group-item{
+    border:none;
+    padding:12px 20px;
+    font-size:15px;
+}
+
+.list-group-item:hover{
+    background:#f8f9fa;
+    padding-left:28px;
+    transition:.3s;
+}
+/* Müşteri Yorumları */
+
+.card-body .text-warning{
+    font-size:18px;
+    letter-spacing:2px;
+}
+
+.card-body p{
+    color:#555;
+    line-height:1.6;
+}
+
+.cok-satan-card{
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.cok-satan-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.15)!important;
+}
+
+.cok-satan-card img{
+    transition:.3s;
+}
+
+.cok-satan-card:hover img{
+    transform:scale(1.05);
+}
+::selection{
+    background:#d9a514;
+    color:white;
+}
+
+img{
+    max-width:100%;
+}
+
+h1,h2,h3,h4,h5{
+    color:#1f2937;
+}
+.hesap-kart{
+    border-radius:20px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.hesap-kart:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.12)!important;
+}
+#aramaSonuc{
+    display:none;
+    position:absolute;
+    background:white;
+    width:100%;
+    z-index:9999;
+    border-radius:10px;
+    overflow:hidden;
+}
