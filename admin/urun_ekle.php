@@ -23,7 +23,7 @@ $altKategoriler = $db->query("
 
 // Ürün ekleme
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $kategori_id =
         $_POST["kategori_id"];
@@ -101,7 +101,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 
     ";
-
 }
 
 ?>
@@ -120,8 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <form
                 method="POST"
-                enctype="multipart/form-data"
-            >
+                enctype="multipart/form-data">
 
                 <!-- Kategori -->
 
@@ -136,8 +134,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <select
                         name="kategori_id"
                         class="form-select"
-                        required
-                    >
+                        required>
 
                         <option value="">
 
@@ -145,11 +142,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         </option>
 
-                        <?php foreach($kategoriler as $kategori){ ?>
+                        <?php foreach ($kategoriler as $kategori) { ?>
 
                             <option
-                                value="<?= $kategori["kategori_id"] ?>"
-                            >
+                                value="<?= $kategori["kategori_id"] ?>">
 
                                 <?= $kategori["kategori_adi"] ?>
 
@@ -174,8 +170,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <select
                         name="alt_kategori_id"
                         class="form-select"
-                        required
-                    >
+                        required>
 
                         <option value="">
 
@@ -183,11 +178,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         </option>
 
-                        <?php foreach($altKategoriler as $altKategori){ ?>
+                        <?php foreach ($altKategoriler as $altKategori) { ?>
 
                             <option
-                                value="<?= $altKategori["alt_kategori_id"] ?>"
-                            >
+                                value="<?= $altKategori["alt_kategori_id"] ?>">
 
                                 <?= $altKategori["alt_kategori_adi"] ?>
 
@@ -213,8 +207,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         type="text"
                         name="urun_adi"
                         class="form-control"
-                        required
-                    >
+                        required>
 
                 </div>
 
@@ -232,8 +225,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         type="number"
                         name="fiyat"
                         class="form-control"
-                        required
-                    >
+                        required>
 
                 </div>
 
@@ -251,8 +243,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         type="number"
                         name="stok"
                         class="form-control"
-                        required
-                    >
+                        required>
 
                 </div>
 
@@ -269,8 +260,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <textarea
                         name="aciklama"
                         class="form-control"
-                        rows="5"
-                    ></textarea>
+                        rows="5"></textarea>
 
                 </div>
 
@@ -288,16 +278,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         type="file"
                         name="resim"
                         class="form-control"
-                        required
-                    >
+                        required>
 
                 </div>
 
                 <!-- Buton -->
 
                 <button
-                    class="btn btn-dark"
-                >
+                    class="btn btn-dark">
 
                     Ürünü Kaydet
 
@@ -310,5 +298,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 
 </div>
-
-<?php include "includes/footer.php"; ?>

@@ -10,10 +10,9 @@ include "../includes/menu.php";
 
 // Giriş kontrol
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     die("Lütfen giriş yapın.");
-
 }
 
 $kullanici_id =
@@ -50,11 +49,11 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
     </div>
 
-    <?php if(count($urunler) > 0){ ?>
+    <?php if (count($urunler) > 0) { ?>
 
         <div class="row g-4">
 
-            <?php foreach($urunler as $urun){ ?>
+            <?php foreach ($urunler as $urun) { ?>
 
                 <div class="col-md-3">
 
@@ -63,8 +62,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
                         <!-- Resim -->
 
                         <a
-                            href="urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                        >
+                            href="urun_detay.php?id=<?= $urun["urun_id"] ?>">
 
                             <img
                                 src="../<?= $urun["resim_url"] ?>"
@@ -72,8 +70,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
                                 style="
                                     height:250px;
                                     object-fit:cover;
-                                "
-                            >
+                                ">
 
                         </a>
 
@@ -85,8 +82,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                                 <a
                                     href="urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                                    class="text-dark text-decoration-none"
-                                >
+                                    class="text-dark text-decoration-none">
 
                                     <?= htmlspecialchars($urun["urun_adi"]) ?>
 
@@ -118,8 +114,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                                 <a
                                     href="../ajax/sepete_ekle.php?urun_id=<?= $urun["urun_id"] ?>"
-                                    class="btn btn-dark"
-                                >
+                                    class="btn btn-dark">
 
                                     Sepete Ekle
 
@@ -129,8 +124,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                                 <a
                                     href="../ajax/favori_sil.php?urun_id=<?= $urun["urun_id"] ?>"
-                                    class="btn btn-danger"
-                                >
+                                    class="btn btn-danger">
 
                                     <i class="bi bi-heart-fill"></i>
 
@@ -150,7 +144,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
         </div>
 
-    <?php }else{ ?>
+    <?php } else { ?>
 
         <div class="alert alert-warning">
 

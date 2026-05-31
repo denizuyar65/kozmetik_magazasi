@@ -9,10 +9,9 @@ include "includes/sidebar.php";
 
 // ID kontrolü
 
-if(!isset($_GET["id"])){
+if (!isset($_GET["id"])) {
 
     die("Sipariş bulunamadı.");
-
 }
 
 $id = intval($_GET["id"]);
@@ -46,10 +45,9 @@ $siparis = $siparisSorgu->fetch(PDO::FETCH_ASSOC);
 
 // Sipariş yoksa
 
-if(!$siparis){
+if (!$siparis) {
 
     die("Sipariş bulunamadı.");
-
 }
 
 // Sipariş ürünleri
@@ -74,7 +72,7 @@ $urunler = $urunlerSorgu->fetchAll(PDO::FETCH_ASSOC);
 
 // Sipariş durumu güncelle
 
-if(isset($_POST["guncelle"])){
+if (isset($_POST["guncelle"])) {
 
     $siparis_durumu =
         trim($_POST["siparis_durumu"]);
@@ -98,7 +96,6 @@ if(isset($_POST["guncelle"])){
     ";
 
     exit;
-
 }
 
 ?>
@@ -107,12 +104,12 @@ if(isset($_POST["guncelle"])){
 
     <h2 class="fw-bold mb-4">
 
-    📦 Sipariş
-    <span class="text-primary">
-        #<?= $siparis["siparis_id"] ?>
-    </span>
+        📦 Sipariş
+        <span class="text-primary">
+            #<?= $siparis["siparis_id"] ?>
+        </span>
 
-</h2>
+    </h2>
 
     <div class="row g-4">
 
@@ -125,8 +122,8 @@ if(isset($_POST["guncelle"])){
                 <div class="card-body">
 
                     <h4>
-    👤 Müşteri Bilgileri
-</h4>
+                        👤 Müşteri Bilgileri
+                    </h4>
 
                     <p>
 
@@ -161,8 +158,8 @@ if(isset($_POST["guncelle"])){
                 <div class="card-body">
 
                     <h4>
-    📍 Teslimat Adresi
-</h4>
+                        📍 Teslimat Adresi
+                    </h4>
 
                     <p>
 
@@ -195,70 +192,69 @@ if(isset($_POST["guncelle"])){
         <div class="card-body">
 
             <h4>
-    🛒 Sipariş Ürünleri
-</h4>
+                🛒 Sipariş Ürünleri
+            </h4>
             <div class="table-responsive">
 
                 <table class="table align-middle">
 
                     <thead>
 
-                       <tr>
-    <th>Resim</th>
-    <th>Ürün</th>
-    <th>Adet</th>
-    <th>Toplam Tutar</th>
-</tr>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Ürün</th>
+                            <th>Adet</th>
+                            <th>Toplam Tutar</th>
+                        </tr>
 
                     </thead>
 
                     <tbody>
 
-                        <?php foreach($urunler as $urun){ ?>
+                        <?php foreach ($urunler as $urun) { ?>
 
-                           <tr>
+                            <tr>
 
-    <td width="100">
+                                <td width="100">
 
-        <img
-    src="../<?= $urun["resim_url"] ?>"
-    class="siparis-resim shadow-sm"
->
+                                    <img
+                                        src="../<?= $urun["resim_url"] ?>"
+                                        class="siparis-resim shadow-sm">
 
-    </td>
+                                </td>
 
-    <td>
+                                <td>
 
-        <strong>
+                                    <strong>
 
-            <?= htmlspecialchars($urun["urun_adi"]) ?>
+                                        <?= htmlspecialchars($urun["urun_adi"]) ?>
 
-        </strong>
+                                    </strong>
 
-    </td>
+                                </td>
 
-    <td>
+                                <td>
 
-        <?= $urun["adet"] ?>
+                                    <?= $urun["adet"] ?>
 
-    </td>
+                                </td>
 
-    <td>
+                                <td>
 
-        <strong class="text-success">
+                                    <strong class="text-success">
 
-            ₺<?= number_format(
-                $urun["birim_fiyat"] * $urun["adet"],
-                2,
-                ",",
-                "."
-            ) ?>
+                                        ₺<?= number_format(
+                                                $urun["birim_fiyat"] * $urun["adet"],
+                                                2,
+                                                ",",
+                                                "."
+                                            ) ?>
 
-        </strong>
+                                    </strong>
 
-    </td>
+                                </td>
 
-</tr>
+                            </tr>
 
                         <?php } ?>
 
@@ -267,14 +263,14 @@ if(isset($_POST["guncelle"])){
                 </table>
                 <div class="text-end mt-4">
 
-    <h4 class="fw-bold text-success">
+                    <h4 class="fw-bold text-success">
 
-        Toplam:
-        ₺<?= number_format($siparis["toplam_tutar"],2,",",".") ?>
+                        Toplam:
+                        ₺<?= number_format($siparis["toplam_tutar"], 2, ",", ".") ?>
 
-    </h4>
+                    </h4>
 
-</div>
+                </div>
 
             </div>
 
@@ -289,21 +285,19 @@ if(isset($_POST["guncelle"])){
         <div class="card-body">
 
             <h4>
-    🚚 Sipariş Durumu
-</h4>
+                🚚 Sipariş Durumu
+            </h4>
 
             <form method="POST">
 
-               <select
-    name="siparis_durumu"
-    class="form-select form-select-lg"
->
+                <select
+                    name="siparis_durumu"
+                    class="form-select form-select-lg">
 
                     <option
                         value="hazırlanıyor"
 
-                        <?= strtolower($siparis["siparis_durumu"]) == "hazırlanıyor" ? "selected" : "" ?>
-                    >
+                        <?= strtolower($siparis["siparis_durumu"]) == "hazırlanıyor" ? "selected" : "" ?>>
 
                         Hazırlanıyor
 
@@ -312,8 +306,7 @@ if(isset($_POST["guncelle"])){
                     <option
                         value="kargoya verildi"
 
-                        <?= strtolower($siparis["siparis_durumu"]) == "kargoya verildi" ? "selected" : "" ?>
-                    >
+                        <?= strtolower($siparis["siparis_durumu"]) == "kargoya verildi" ? "selected" : "" ?>>
 
                         Kargoya Verildi
 
@@ -322,8 +315,7 @@ if(isset($_POST["guncelle"])){
                     <option
                         value="teslim edildi"
 
-                        <?= strtolower($siparis["siparis_durumu"]) == "teslim edildi" ? "selected" : "" ?>
-                    >
+                        <?= strtolower($siparis["siparis_durumu"]) == "teslim edildi" ? "selected" : "" ?>>
 
                         Teslim Edildi
 
@@ -334,7 +326,7 @@ if(isset($_POST["guncelle"])){
                 <button
                     type="submit"
                     name="guncelle"
-                   class="btn btn-success px-4">
+                    class="btn btn-success px-4">
 
                     Güncelle
 
@@ -347,5 +339,3 @@ if(isset($_POST["guncelle"])){
     </div>
 
 </div>
-
-<?php include "includes/footer.php"; ?>

@@ -6,7 +6,7 @@ include "../config/baglan.php";
 
 $hata = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email =
         trim($_POST["email"]);
@@ -25,47 +25,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $kullanici =
         $sorgu->fetch(PDO::FETCH_ASSOC);
 
-    if(
+    if (
         $kullanici
         &&
         password_verify(
             $sifre,
             $kullanici["sifre"]
         )
-    ){
+    ) {
 
-        if(
+        if (
             $kullanici["rol"]
             ==
             "admin"
-        ){
+        ) {
 
-           $_SESSION["admin_id"] =
-    $kullanici["kullanici_id"];
+            $_SESSION["admin_id"] =
+                $kullanici["kullanici_id"];
 
-$_SESSION["admin_ad"] =
-    $kullanici["ad"];
+            $_SESSION["admin_ad"] =
+                $kullanici["ad"];
 
-$_SESSION["admin_rol"] =
-    $kullanici["rol"];
+            $_SESSION["admin_rol"] =
+                $kullanici["rol"];
 
-header("Location: dashboard.php");
-exit;
-
-        }else{
+            header("Location: dashboard.php");
+            exit;
+        } else {
 
             $hata =
                 'Bu hesap admin değil.';
-
         }
-
-    }else{
+    } else {
 
         $hata =
             'Email veya şifre yanlış.';
-
     }
-
 }
 
 ?>
@@ -78,7 +73,7 @@ exit;
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
 
     <title>
         Admin Giriş
@@ -86,66 +81,64 @@ exit;
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 
 </head>
 
 <body class="bg-light">
 
-<div class="container">
+    <div class="container">
 
-    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="row vh-100 justify-content-center align-items-center">
 
-        <div class="col-md-4">
+            <div class="col-md-4">
 
-            <div class="card shadow border-0">
+                <div class="card shadow border-0">
 
-                <div class="card-body p-4">
+                    <div class="card-body p-4">
 
-                    <h3 class="fw-bold text-center mb-4">
+                        <h3 class="fw-bold text-center mb-4">
 
-                        Admin Giriş
+                            Admin Giriş
 
-                    </h3>
+                        </h3>
 
-                    <?php if($hata != ""){ ?>
+                        <?php if ($hata != "") { ?>
 
-                        <div class="alert alert-danger">
+                            <div class="alert alert-danger">
 
-                            <?= $hata ?>
+                                <?= $hata ?>
 
-                        </div>
+                            </div>
 
-                    <?php } ?>
+                        <?php } ?>
 
-                    <form method="POST">
+                        <form method="POST">
 
-                        <input
-                            type="email"
-                            name="email"
-                            class="form-control mb-3"
-                            placeholder="Email"
-                            required
-                        >
+                            <input
+                                type="email"
+                                name="email"
+                                class="form-control mb-3"
+                                placeholder="Email"
+                                required>
 
-                        <input
-                            type="password"
-                            name="sifre"
-                            class="form-control mb-4"
-                            placeholder="Şifre"
-                            required
-                        >
+                            <input
+                                type="password"
+                                name="sifre"
+                                class="form-control mb-4"
+                                placeholder="Şifre"
+                                required>
 
-                        <button
-                            class="btn btn-dark w-100"
-                        >
+                            <button
+                                class="btn btn-dark w-100">
 
-                            Giriş Yap
+                                Giriş Yap
 
-                        </button>
+                            </button>
 
-                    </form>
+                        </form>
+
+                    </div>
 
                 </div>
 
@@ -155,7 +148,6 @@ exit;
 
     </div>
 
-</div>
-
 </body>
+
 </html>

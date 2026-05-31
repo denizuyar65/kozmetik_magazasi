@@ -38,19 +38,18 @@
 
     </a>
     <li>
-    <a href="yorumlar.php">
-        <i class="bi bi-chat-dots"></i>
-        <span>Yorumlar</span>
-    </a>
-</li>
+        <a href="yorumlar.php">
+            <i class="bi bi-chat-dots"></i>
+            <span>Yorumlar</span>
+        </a>
+    </li>
     <a
-    href="mesajlar.php"
-    class="nav-link text-white"
-       >
+        href="mesajlar.php"
+        class="nav-link text-white">
 
-    <i class="bi bi-envelope"></i>
+        <i class="bi bi-envelope"></i>
 
-    Gelen Mesajlar
+        Gelen Mesajlar
 
     </a>
 

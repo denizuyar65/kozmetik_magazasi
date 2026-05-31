@@ -15,81 +15,78 @@ $mesajlar = $db->query("
 
 ?>
 <div class="admin-content">
-<h1 class="page-title">
+    <h1 class="page-title">
 
-    Gelen Mesajlar
+        Gelen Mesajlar
 
-</h1>
-<div class="card shadow-sm">
+    </h1>
+    <div class="card shadow-sm">
 
-    <div class="card-body">
+        <div class="card-body">
 
-        <table class="table table-hover align-middle">
+            <table class="table table-hover align-middle">
 
-            <thead>
+                <thead>
 
-                <tr>
-                    
-                    <th>ID</th>
-                    <th>Ad Soyad</th>
-                    <th>E-Posta</th>
-                    <th>Mesaj</th>
-                    <th>Tarih</th>
-                    <th>İşlem</th>
-                </tr>
+                    <tr>
 
-            </thead>
+                        <th>ID</th>
+                        <th>Ad Soyad</th>
+                        <th>E-Posta</th>
+                        <th>Mesaj</th>
+                        <th>Tarih</th>
+                        <th>İşlem</th>
+                    </tr>
 
-            <tbody>
+                </thead>
 
-                <?php foreach($mesajlar as $mesaj){ ?>
+                <tbody>
 
-                <tr>
+                    <?php foreach ($mesajlar as $mesaj) { ?>
 
-                    <td><?= $mesaj["mesaj_id"] ?></td>
+                        <tr>
 
-                    <td><?= htmlspecialchars($mesaj["ad_soyad"]) ?></td>
+                            <td><?= $mesaj["mesaj_id"] ?></td>
 
-                    <td><?= htmlspecialchars($mesaj["email"]) ?></td>
+                            <td><?= htmlspecialchars($mesaj["ad_soyad"]) ?></td>
 
-                    <td style="max-width:300px;">
+                            <td><?= htmlspecialchars($mesaj["email"]) ?></td>
 
-                        <?= htmlspecialchars($mesaj["mesaj"]) ?>
+                            <td style="max-width:300px;">
 
-                    </td>
+                                <?= htmlspecialchars($mesaj["mesaj"]) ?>
 
-                    <td><?= $mesaj["tarih"] ?></td>
-                    <td>
+                            </td>
 
-                     <a
-                        href="mesaj_detay.php?id=<?= $mesaj["mesaj_id"] ?>"
-                      class="btn btn-sm btn-primary"
-                     >
+                            <td><?= $mesaj["tarih"] ?></td>
+                            <td>
 
-                    Detay
+                                <a
+                                    href="mesaj_detay.php?id=<?= $mesaj["mesaj_id"] ?>"
+                                    class="btn btn-sm btn-primary">
 
-                    </a>
-                    <a
-        href="mesaj_sil.php?id=<?= $mesaj["mesaj_id"] ?>"
-        class="btn btn-sm btn-danger"
-        onclick="return confirm('Mesaj silinsin mi?')"
-    >
+                                    Detay
 
-        Sil
+                                </a>
+                                <a
+                                    href="mesaj_sil.php?id=<?= $mesaj["mesaj_id"] ?>"
+                                    class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Mesaj silinsin mi?')">
 
-    </a>
+                                    Sil
 
-</td>
+                                </a>
 
-                </tr>
+                            </td>
 
-                <?php } ?>
+                        </tr>
 
-            </tbody>
+                    <?php } ?>
 
-        </table>
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
-
-</div>
-<?php include "includes/footer.php"; ?>

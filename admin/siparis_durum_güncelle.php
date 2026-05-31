@@ -4,7 +4,7 @@ session_start();
 include "includes/admin_kontrol.php";
 include "../config/baglan.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $siparis_id = intval($_POST["siparis_id"]);
 
@@ -20,7 +20,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $durum,
         $siparis_id
     ]);
-
 }
 
 header("Location: siparisler.php");

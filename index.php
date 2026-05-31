@@ -8,12 +8,12 @@ include "includes/header.php";
 
 include "includes/menu.php";
 
-if(isset($_SESSION["basarili"])){
+if (isset($_SESSION["basarili"])) {
 
     echo '
     <div class="container mt-3">
         <div class="alert alert-success alert-dismissible fade show">
-            '.$_SESSION["basarili"].'
+            ' . $_SESSION["basarili"] . '
             <button type="button"
                     class="btn-close"
                     data-bs-dismiss="alert">
@@ -73,8 +73,7 @@ $cokSatanlar = $db->query("
     <div
         id="anaSlider"
         class="carousel slide shadow rounded overflow-hidden"
-        data-bs-ride="carousel"
-    >
+        data-bs-ride="carousel">
 
         <div class="carousel-inner">
 
@@ -88,8 +87,7 @@ $cokSatanlar = $db->query("
                     style="
                         height:450px;
                         object-fit:cover;
-                    "
-                >
+                    ">
 
                 <div class="carousel-caption">
 
@@ -119,8 +117,7 @@ $cokSatanlar = $db->query("
                     style="
                         height:450px;
                         object-fit:cover;
-                    "
-                >
+                    ">
 
                 <div class="carousel-caption">
 
@@ -150,8 +147,7 @@ $cokSatanlar = $db->query("
                     style="
                         height:450px;
                         object-fit:cover;
-                    "
-                >
+                    ">
 
                 <div class="carousel-caption">
 
@@ -177,8 +173,7 @@ $cokSatanlar = $db->query("
             class="carousel-control-prev"
             type="button"
             data-bs-target="#anaSlider"
-            data-bs-slide="prev"
-        >
+            data-bs-slide="prev">
 
             <span class="carousel-control-prev-icon"></span>
 
@@ -188,8 +183,7 @@ $cokSatanlar = $db->query("
             class="carousel-control-next"
             type="button"
             data-bs-target="#anaSlider"
-            data-bs-slide="next"
-        >
+            data-bs-slide="next">
 
             <span class="carousel-control-next-icon"></span>
 
@@ -198,27 +192,27 @@ $cokSatanlar = $db->query("
     </div>
 
 </section>
-<?php if(!isset($_SESSION["kullanici_id"])){ ?>
+<?php if (!isset($_SESSION["kullanici_id"])) { ?>
 
-<section class="container mt-4">
+    <section class="container mt-4">
 
-    <div class="alert alert-warning text-center shadow-sm">
+        <div class="alert alert-warning text-center shadow-sm">
 
-        <h5 class="mb-1">
+            <h5 class="mb-1">
 
-            🎉 Üyelere Özel %30 İndirim
+                🎉 Üyelere Özel %30 İndirim
 
-        </h5>
+            </h5>
 
-        <p class="mb-0">
+            <p class="mb-0">
 
-            Hemen üye ol, ilk siparişinde %30 indirim kazan!
+                Hemen üye ol, ilk siparişinde %30 indirim kazan!
 
-        </p>
+            </p>
 
-    </div>
+        </div>
 
-</section>
+    </section>
 
 <?php } ?>
 
@@ -234,8 +228,7 @@ $cokSatanlar = $db->query("
 
             <a
                 href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=13"
-                class="text-decoration-none"
-            >
+                class="text-decoration-none">
 
                 <div
                     class="card border-0 shadow-sm d-flex justify-content-center align-items-center"
@@ -243,12 +236,10 @@ $cokSatanlar = $db->query("
                         background:#d4a017;
                         border-radius:20px;
                         height:80px;
-                    "
-                >
+                    ">
 
                     <h5
-                        class="fw-bold text-center text-white m-0"
-                    >
+                        class="fw-bold text-center text-white m-0">
 
                         Makyaj
 
@@ -266,8 +257,7 @@ $cokSatanlar = $db->query("
 
             <a
                 href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=17"
-                class="text-decoration-none"
-            >
+                class="text-decoration-none">
 
                 <div
                     class="card border-0 shadow-sm d-flex justify-content-center align-items-center"
@@ -275,12 +265,10 @@ $cokSatanlar = $db->query("
                         background:#d4a017;
                         border-radius:20px;
                         height:80px;
-                    "
-                >
+                    ">
 
                     <h5
-                        class="fw-bold text-center text-white m-0"
-                    >
+                        class="fw-bold text-center text-white m-0">
 
                         Cilt Bakımı
 
@@ -298,8 +286,7 @@ $cokSatanlar = $db->query("
 
             <a
                 href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=20"
-                class="text-decoration-none"
-            >
+                class="text-decoration-none">
 
                 <div
                     class="card border-0 shadow-sm d-flex justify-content-center align-items-center"
@@ -307,12 +294,10 @@ $cokSatanlar = $db->query("
                         background:#d4a017;
                         border-radius:20px;
                         height:80px;
-                    "
-                >
+                    ">
 
                     <h5
-                        class="fw-bold text-center text-white m-0"
-                    >
+                        class="fw-bold text-center text-white m-0">
 
                         Saç Bakımı
 
@@ -330,8 +315,7 @@ $cokSatanlar = $db->query("
 
             <a
                 href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=23"
-                class="text-decoration-none"
-            >
+                class="text-decoration-none">
 
                 <div
                     class="card border-0 shadow-sm d-flex justify-content-center align-items-center"
@@ -339,12 +323,10 @@ $cokSatanlar = $db->query("
                         background:#d4a017;
                         border-radius:20px;
                         height:80px;
-                    "
-                >
+                    ">
 
                     <h5
-                        class="fw-bold text-center text-white m-0"
-                    >
+                        class="fw-bold text-center text-white m-0">
 
                         Parfüm
 
@@ -368,8 +350,7 @@ $cokSatanlar = $db->query("
         <div class="col-md-4">
 
             <div
-                class="card border-0 shadow h-100 text-center p-4"
-            >
+                class="card border-0 shadow h-100 text-center p-4">
 
                 <h2>
 
@@ -396,8 +377,7 @@ $cokSatanlar = $db->query("
         <div class="col-md-4">
 
             <div
-                class="card border-0 shadow h-100 text-center p-4"
-            >
+                class="card border-0 shadow h-100 text-center p-4">
 
                 <h2>
 
@@ -424,8 +404,7 @@ $cokSatanlar = $db->query("
         <div class="col-md-4">
 
             <div
-                class="card border-0 shadow h-100 text-center p-4"
-            >
+                class="card border-0 shadow h-100 text-center p-4">
 
                 <h2>
 
@@ -464,73 +443,67 @@ $cokSatanlar = $db->query("
 
     <div class="row g-4">
 
-        <?php foreach($cokSatanlar as $urun){ ?>
+        <?php foreach ($cokSatanlar as $urun) { ?>
 
-        <div class="col-md-3">
+            <div class="col-md-3">
 
-            <a
-                href="sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                class="text-decoration-none text-dark"
-            >
+                <a
+                    href="sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
+                    class="text-decoration-none text-dark">
 
-                <div
-                    class="card border-0 shadow-sm h-100 cok-satan-card"
-                >
+                    <div
+                        class="card border-0 shadow-sm h-100 cok-satan-card">
 
-                    <img
-                        src="<?= $urun["resim_url"] ?>"
-                        class="card-img-top"
-                        style="
+                        <img
+                            src="<?= $urun["resim_url"] ?>"
+                            class="card-img-top"
+                            style="
                             height:220px;
                             object-fit:cover;
-                        "
-                    >
+                        ">
 
-                    <div class="card-body text-center">
+                        <div class="card-body text-center">
 
-                        <span
-                            class="badge bg-danger mb-2"
-                        >
-                            🔥 Çok Satan
-                        </span>
+                            <span
+                                class="badge bg-danger mb-2">
+                                🔥 Çok Satan
+                            </span>
 
-                        <h6 class="fw-bold">
+                            <h6 class="fw-bold">
 
-                            <?= htmlspecialchars(
-                                $urun["urun_adi"]
-                            ) ?>
+                                <?= htmlspecialchars(
+                                    $urun["urun_adi"]
+                                ) ?>
 
-                        </h6>
+                            </h6>
 
-                        <div
-                            class="text-success fw-bold fs-5"
-                        >
+                            <div
+                                class="text-success fw-bold fs-5">
 
-                            ₺<?= number_format(
-                                $urun["fiyat"],
-                                2,
-                                ",",
-                                "."
-                            ) ?>
+                                ₺<?= number_format(
+                                        $urun["fiyat"],
+                                        2,
+                                        ",",
+                                        "."
+                                    ) ?>
+
+                            </div>
+
+                            <small
+                                class="text-muted">
+
+                                <?= $urun["toplam_satis"] ?>
+                                adet satıldı
+
+                            </small>
 
                         </div>
 
-                        <small
-                            class="text-muted"
-                        >
-
-                            <?= $urun["toplam_satis"] ?>
-                            adet satıldı
-
-                        </small>
-
                     </div>
 
-                </div>
+                </a>
 
-            </a>
-
-        </div>
+            </div>
 
         <?php } ?>
 
@@ -542,8 +515,7 @@ $cokSatanlar = $db->query("
 
 <section
     class="container mt-5 mb-5"
-    id="urunler"
->
+    id="urunler">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
 
@@ -557,13 +529,13 @@ $cokSatanlar = $db->query("
 
     <div class="row g-4">
 
-        <?php foreach($urunler as $urun){ ?>
+        <?php foreach ($urunler as $urun) { ?>
 
             <?php
 
             $favoriKontrol = false;
 
-            if(isset($_SESSION["kullanici_id"])){
+            if (isset($_SESSION["kullanici_id"])) {
 
                 $favSorgu = $db->prepare("
                     SELECT *
@@ -577,12 +549,10 @@ $cokSatanlar = $db->query("
                     $urun["urun_id"]
                 ]);
 
-                if($favSorgu->rowCount() > 0){
+                if ($favSorgu->rowCount() > 0) {
 
                     $favoriKontrol = true;
-
                 }
-
             }
 
             ?>
@@ -591,21 +561,19 @@ $cokSatanlar = $db->query("
 
                 <div class="card border-0 shadow-sm h-100 position-relative">
 
-    <span
-        class="badge bg-danger position-absolute m-2"
-    >
+                    <span
+                        class="badge bg-danger position-absolute m-2">
 
-        Yeni
+                        Yeni
 
-    </span>
+                    </span>
 
-    
+
 
                     <!-- RESİM -->
 
                     <a
-                        href="/kozmetik_magazasi/sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                    >
+                        href="/kozmetik_magazasi/sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>">
 
                         <img
                             src="<?= $urun["resim_url"] ?>"
@@ -613,8 +581,7 @@ $cokSatanlar = $db->query("
                             style="
                                 height:250px;
                                 object-fit:cover;
-                            "
-                        >
+                            ">
 
                     </a>
 
@@ -626,8 +593,7 @@ $cokSatanlar = $db->query("
 
                             <a
                                 href="/kozmetik_magazasi/sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                                class="text-dark text-decoration-none"
-                            >
+                                class="text-dark text-decoration-none">
 
                                 <?= htmlspecialchars($urun["urun_adi"]) ?>
 
@@ -640,10 +606,10 @@ $cokSatanlar = $db->query("
                             <?= htmlspecialchars($urun["aciklama"]) ?>
 
                         </p>
-                        
-<?php
 
-$puanSorgu = $db->prepare("
+                        <?php
+
+                        $puanSorgu = $db->prepare("
     SELECT
         AVG(puan) as ortalama,
         COUNT(*) as toplam
@@ -651,40 +617,38 @@ $puanSorgu = $db->prepare("
     WHERE urun_id = ?
 ");
 
-$puanSorgu->execute([
-    $urun["urun_id"]
-]);
+                        $puanSorgu->execute([
+                            $urun["urun_id"]
+                        ]);
 
-$puan = $puanSorgu->fetch(PDO::FETCH_ASSOC);
+                        $puan = $puanSorgu->fetch(PDO::FETCH_ASSOC);
 
-?>
+                        ?>
 
-<div class="text-warning mb-2">
+                        <div class="text-warning mb-2">
 
-<?php
+                            <?php
 
-if($puan["toplam"] > 0){
+                            if ($puan["toplam"] > 0) {
 
-    echo str_repeat(
-        "★",
-        round($puan["ortalama"])
-    );
+                                echo str_repeat(
+                                    "★",
+                                    round($puan["ortalama"])
+                                );
+                            } else {
 
-}else{
+                                echo "☆☆☆☆☆";
+                            }
 
-    echo "☆☆☆☆☆";
+                            ?>
 
-}
+                            <small class="text-muted">
 
-?>
+                                (<?= $puan["toplam"] ?>)
 
-<small class="text-muted">
+                            </small>
 
-    (<?= $puan["toplam"] ?>)
-
-</small>
-
-</div>
+                        </div>
                         <h4 class="fw-bold">
 
                             ₺<?= $urun["fiyat"] ?>
@@ -700,19 +664,17 @@ if($puan["toplam"] > 0){
                         <div class="d-grid gap-2">
 
                             <!-- SEPET -->
-                             <a
-                              href="/kozmetik_magazasi/sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                              class="btn btn-outline-dark"
-                              >
+                            <a
+                                href="/kozmetik_magazasi/sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
+                                class="btn btn-outline-dark">
 
-                              İncele
+                                İncele
 
                             </a>
 
                             <a
                                 href="/kozmetik_magazasi/ajax/sepete_ekle.php?urun_id=<?= $urun["urun_id"] ?>"
-                                class="btn btn-dark"
-                            >
+                                class="btn btn-dark">
 
                                 Sepete Ekle
 
@@ -720,12 +682,11 @@ if($puan["toplam"] > 0){
 
                             <!-- FAVORİ -->
 
-                            <?php if($favoriKontrol){ ?>
+                            <?php if ($favoriKontrol) { ?>
 
                                 <a
                                     href="/kozmetik_magazasi/ajax/favori_sil.php?urun_id=<?= $urun["urun_id"] ?>"
-                                    class="btn btn-danger"
-                                >
+                                    class="btn btn-danger">
 
                                     <i class="bi bi-heart-fill"></i>
 
@@ -733,12 +694,11 @@ if($puan["toplam"] > 0){
 
                                 </a>
 
-                            <?php }else{ ?>
+                            <?php } else { ?>
 
                                 <a
                                     href="/kozmetik_magazasi/ajax/favori_ekle.php?urun_id=<?= $urun["urun_id"] ?>"
-                                    class="btn btn-outline-danger"
-                                >
+                                    class="btn btn-outline-danger">
 
                                     <i class="bi bi-heart"></i>
 
@@ -759,78 +719,78 @@ if($puan["toplam"] > 0){
         <?php } ?>
 
     </div>
-<section class="container mt-5 mb-5">
+    <section class="container mt-5 mb-5">
 
-    <div class="text-center mb-5">
+        <div class="text-center mb-5">
 
-        <h2 class="fw-bold">
+            <h2 class="fw-bold">
 
-            ⭐ Müşteri Yorumları
+                ⭐ Müşteri Yorumları
 
-        </h2>
+            </h2>
 
-        <p class="text-muted">
+            <p class="text-muted">
 
-            Müşterilerimizin deneyimleri
+                Müşterilerimizin deneyimleri
 
-        </p>
+            </p>
 
-    </div>
+        </div>
 
-    <div class="row g-4">
+        <div class="row g-4">
 
-        <?php foreach($yorumlar as $yorum){ ?>
+            <?php foreach ($yorumlar as $yorum) { ?>
 
-            <div class="col-md-4">
+                <div class="col-md-4">
 
-                <div class="card border-0 shadow-sm h-100">
+                    <div class="card border-0 shadow-sm h-100">
 
-                    <div class="card-body">
+                        <div class="card-body">
 
-                        <div class="text-warning mb-3">
+                            <div class="text-warning mb-3">
 
-                            <?= str_repeat(
-                                "★",
-                                $yorum["puan"]
-                            ) ?>
+                                <?= str_repeat(
+                                    "★",
+                                    $yorum["puan"]
+                                ) ?>
+
+                            </div>
+
+                            <p class="mb-3">
+
+                                "
+                                <?= htmlspecialchars(
+                                    $yorum["yorum"]
+                                ) ?>
+                                "
+
+                            </p>
+
+                            <hr>
+
+                            <strong>
+
+                                <?= htmlspecialchars(
+                                    $yorum["ad"]
+                                ) ?>
+
+                                <?= htmlspecialchars(
+                                    $yorum["soyad"]
+                                ) ?>
+
+                            </strong>
 
                         </div>
-
-                        <p class="mb-3">
-
-                            "
-                            <?= htmlspecialchars(
-                                $yorum["yorum"]
-                            ) ?>
-                            "
-
-                        </p>
-
-                        <hr>
-
-                        <strong>
-
-                            <?= htmlspecialchars(
-                                $yorum["ad"]
-                            ) ?>
-
-                            <?= htmlspecialchars(
-                                $yorum["soyad"]
-                            ) ?>
-
-                        </strong>
 
                     </div>
 
                 </div>
 
-            </div>
+            <?php } ?>
 
-        <?php } ?>
+        </div>
 
-    </div>
-
-</section>
+    </section>
 </section>
 <section class="footer-main mt-5">
 
@@ -888,11 +848,11 @@ if($puan["toplam"] > 0){
         </div>
 
     </div>
-<div class="footer-bottom">
+    <div class="footer-bottom">
 
-    © <?= date("Y") ?> VELOURA COSMETICS • Tüm Hakları Saklıdır.
+        © <?= date("Y") ?> VELOURA COSMETICS • Tüm Hakları Saklıdır.
 
-</div>
+    </div>
 </section>
 
 <?php include "includes/footer.php"; ?>

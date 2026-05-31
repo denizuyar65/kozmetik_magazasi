@@ -38,8 +38,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
         <a
             href="urun_ekle.php"
-            class="btn btn-dark"
-        >
+            class="btn btn-dark">
 
             <i class="bi bi-plus-circle"></i>
 
@@ -70,7 +69,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
             <tbody>
 
-                <?php foreach($urunler as $urun){ ?>
+                <?php foreach ($urunler as $urun) { ?>
 
                     <tr>
 
@@ -80,8 +79,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                             <img
                                 src="../<?= $urun["resim_url"] ?>"
-                                class="urun-resim"
-                            >
+                                class="urun-resim">
 
                         </td>
 
@@ -117,7 +115,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                         <td>
 
-                            <?php if($urun["stok"] <= 5){ ?>
+                            <?php if ($urun["stok"] <= 5) { ?>
 
                                 <span class="badge bg-danger">
 
@@ -125,7 +123,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                                 </span>
 
-                            <?php }else{ ?>
+                            <?php } else { ?>
 
                                 <span class="badge bg-success">
 
@@ -145,8 +143,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                                 <a
                                     href="urun_duzenle.php?id=<?= $urun["urun_id"] ?>"
-                                    class="btn btn-sm btn-primary"
-                                >
+                                    class="btn btn-sm btn-primary">
 
                                     Düzenle
 
@@ -159,8 +156,7 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
                                         return confirm(
                                             'Ürün silinsin mi?'
                                         )
-                                    "
-                                >
+                                    ">
 
                                     Sil
 
@@ -181,5 +177,3 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 </div>
-
-<?php include "includes/footer.php"; ?>

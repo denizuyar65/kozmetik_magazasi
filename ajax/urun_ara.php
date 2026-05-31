@@ -2,11 +2,11 @@
 
 include "../config/baglan.php";
 
-if(isset($_GET["arama"])){
+if (isset($_GET["arama"])) {
 
     $arama = trim($_GET["arama"]);
 
-    if($arama != ""){
+    if ($arama != "") {
 
         $sorgu = $db->prepare("
             SELECT *
@@ -23,48 +23,45 @@ if(isset($_GET["arama"])){
 
         $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
-        if(count($urunler) > 0){
+        if (count($urunler) > 0) {
 
-            foreach($urunler as $urun){
+            foreach ($urunler as $urun) {
 
 ?>
 
-<a
-    href="/kozmetik_magazasi/sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
-    class="d-flex align-items-center p-2 border-bottom text-dark text-decoration-none arama-item"
->
+                <a
+                    href="/kozmetik_magazasi/sayfalar/urun_detay.php?id=<?= $urun["urun_id"] ?>"
+                    class="d-flex align-items-center p-2 border-bottom text-dark text-decoration-none arama-item">
 
-    <img
-        src="/kozmetik_magazasi/<?= $urun["resim_url"] ?>"
-        width="55"
-        height="55"
-        class="rounded me-3"
-        style="object-fit:cover;"
-    >
+                    <img
+                        src="/kozmetik_magazasi/<?= $urun["resim_url"] ?>"
+                        width="55"
+                        height="55"
+                        class="rounded me-3"
+                        style="object-fit:cover;">
 
-    <div>
+                    <div>
 
-        <div class="fw-semibold">
+                        <div class="fw-semibold">
 
-            <?= htmlspecialchars($urun["urun_adi"]) ?>
+                            <?= htmlspecialchars($urun["urun_adi"]) ?>
 
-        </div>
+                        </div>
 
-        <small class="text-muted">
+                        <small class="text-muted">
 
-            ₺<?= $urun["fiyat"] ?>
+                            ₺<?= $urun["fiyat"] ?>
 
-        </small>
+                        </small>
 
-    </div>
+                    </div>
 
-</a>
+                </a>
 
 <?php
 
             }
-
-        }else{
+        } else {
 
             echo "
                 <div class='p-3 text-muted'>
@@ -73,10 +70,7 @@ if(isset($_GET["arama"])){
 
                 </div>
             ";
-
         }
-
     }
-
 }
 ?>

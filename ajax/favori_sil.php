@@ -3,11 +3,10 @@
 include "../config/baglan.php";
 include "../includes/session.php";
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: ../sayfalar/giris.php");
     exit;
-
 }
 
 $kullanici_id = $_SESSION["kullanici_id"];

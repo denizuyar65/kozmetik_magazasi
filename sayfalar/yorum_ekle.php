@@ -4,10 +4,9 @@ session_start();
 
 include "../config/baglan.php";
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     die("Giriş yapmalısınız.");
-
 }
 
 $urun_id = intval($_POST["urun_id"]);
@@ -45,5 +44,5 @@ $ekle->execute([
 
 ]);
 
-header("Location: urun_detay.php?id=".$urun_id);
+header("Location: urun_detay.php?id=" . $urun_id);
 exit;

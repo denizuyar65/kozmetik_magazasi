@@ -6,10 +6,9 @@ include "../config/baglan.php";
 
 // ID kontrolü
 
-if(!isset($_GET["id"])){
+if (!isset($_GET["id"])) {
 
     die("Ürün bulunamadı.");
-
 }
 
 $id = intval($_GET["id"]);
@@ -28,28 +27,25 @@ $urun = $sorgu->fetch(PDO::FETCH_ASSOC);
 
 // Ürün yoksa
 
-if(!$urun){
+if (!$urun) {
 
     die("Ürün bulunamadı.");
-
 }
 
 // Resmi sil
 
-if(
+if (
     !empty($urun["resim_url"])
-){
+) {
 
     $dosya =
         "../" .
         $urun["resim_url"];
 
-    if(file_exists($dosya)){
+    if (file_exists($dosya)) {
 
         unlink($dosya);
-
     }
-
 }
 
 // Veritabanından sil

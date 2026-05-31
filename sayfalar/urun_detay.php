@@ -10,10 +10,9 @@ include "../includes/menu.php";
 
 // ID kontrolü
 
-if(!isset($_GET["id"])){
+if (!isset($_GET["id"])) {
 
     die("Ürün bulunamadı.");
-
 }
 
 $id = intval($_GET["id"]);
@@ -32,10 +31,9 @@ $urun = $sorgu->fetch(PDO::FETCH_ASSOC);
 
 // Ürün yoksa
 
-if(!$urun){
+if (!$urun) {
 
     die("Ürün bulunamadı.");
-
 }
 // Ürün yorumları
 
@@ -71,7 +69,7 @@ $puanBilgi = $puanSorgu->fetch(PDO::FETCH_ASSOC);
 
 $favoriKontrol = false;
 
-if(isset($_SESSION["kullanici_id"])){
+if (isset($_SESSION["kullanici_id"])) {
 
     $favSorgu = $db->prepare("
         SELECT *
@@ -85,12 +83,10 @@ if(isset($_SESSION["kullanici_id"])){
         $urun["urun_id"]
     ]);
 
-    if($favSorgu->rowCount() > 0){
+    if ($favSorgu->rowCount() > 0) {
 
         $favoriKontrol = true;
-
     }
-
 }
 
 ?>
@@ -111,8 +107,7 @@ if(isset($_SESSION["kullanici_id"])){
                     style="
                         height:550px;
                         object-fit:cover;
-                    "
-                >
+                    ">
 
             </div>
 
@@ -127,37 +122,37 @@ if(isset($_SESSION["kullanici_id"])){
                 <?= htmlspecialchars($urun["urun_adi"]) ?>
 
             </h1>
-            <?php if($puanBilgi["toplam"] > 0){ ?>
+            <?php if ($puanBilgi["toplam"] > 0) { ?>
 
-<div class="mb-3">
+                <div class="mb-3">
 
-    <span class="text-warning fs-5">
+                    <span class="text-warning fs-5">
 
-        <?= str_repeat(
-            "★",
-            round($puanBilgi["ortalama"])
-        ) ?>
+                        <?= str_repeat(
+                            "★",
+                            round($puanBilgi["ortalama"])
+                        ) ?>
 
-    </span>
+                    </span>
 
-    <span class="text-muted">
+                    <span class="text-muted">
 
-        (<?= number_format(
-            $puanBilgi["ortalama"],
-            1
-        ) ?> / 5)
+                        (<?= number_format(
+                                $puanBilgi["ortalama"],
+                                1
+                            ) ?> / 5)
 
-        •
+                        •
 
-        <?= $puanBilgi["toplam"] ?>
+                        <?= $puanBilgi["toplam"] ?>
 
-        değerlendirme
+                        değerlendirme
 
-    </span>
+                    </span>
 
-</div>
+                </div>
 
-<?php } ?>
+            <?php } ?>
 
             <p class="text-muted mb-4">
 
@@ -173,7 +168,7 @@ if(isset($_SESSION["kullanici_id"])){
 
             <!-- Stok -->
 
-            <?php if($urun["stok"] > 0){ ?>
+            <?php if ($urun["stok"] > 0) { ?>
 
                 <div class="alert alert-success">
 
@@ -181,7 +176,7 @@ if(isset($_SESSION["kullanici_id"])){
 
                 </div>
 
-            <?php }else{ ?>
+            <?php } else { ?>
 
                 <div class="alert alert-danger">
 
@@ -199,8 +194,7 @@ if(isset($_SESSION["kullanici_id"])){
 
                 <a
                     href="../ajax/sepete_ekle.php?urun_id=<?= $urun["urun_id"] ?>"
-                    class="btn btn-dark btn-lg"
-                >
+                    class="btn btn-dark btn-lg">
 
                     Sepete Ekle
 
@@ -208,23 +202,21 @@ if(isset($_SESSION["kullanici_id"])){
 
                 <!-- Favori -->
 
-                <?php if($favoriKontrol){ ?>
+                <?php if ($favoriKontrol) { ?>
 
                     <a
                         href="../ajax/favori_sil.php?urun_id=<?= $urun["urun_id"] ?>"
-                        class="btn btn-danger btn-lg"
-                    >
+                        class="btn btn-danger btn-lg">
 
                         <i class="bi bi-heart-fill"></i>
 
                     </a>
 
-                <?php }else{ ?>
+                <?php } else { ?>
 
                     <a
                         href="../ajax/favori_ekle.php?urun_id=<?= $urun["urun_id"] ?>"
-                        class="btn btn-outline-danger btn-lg"
-                    >
+                        class="btn btn-outline-danger btn-lg">
 
                         <i class="bi bi-heart"></i>
 
@@ -247,7 +239,7 @@ if(isset($_SESSION["kullanici_id"])){
 
     </h3>
 
-    <?php if(isset($_SESSION["kullanici_id"])){ ?>
+    <?php if (isset($_SESSION["kullanici_id"])) { ?>
 
         <div class="card shadow-sm mb-4">
 
@@ -255,14 +247,12 @@ if(isset($_SESSION["kullanici_id"])){
 
                 <form
                     action="yorum_ekle.php"
-                    method="POST"
-                >
+                    method="POST">
 
                     <input
                         type="hidden"
                         name="urun_id"
-                        value="<?= $urun["urun_id"] ?>"
-                    >
+                        value="<?= $urun["urun_id"] ?>">
 
                     <div class="mb-3">
 
@@ -274,8 +264,7 @@ if(isset($_SESSION["kullanici_id"])){
 
                         <select
                             name="puan"
-                            class="form-select"
-                        >
+                            class="form-select">
 
                             <option value="5">★★★★★</option>
                             <option value="4">★★★★☆</option>
@@ -294,14 +283,12 @@ if(isset($_SESSION["kullanici_id"])){
                             class="form-control"
                             rows="4"
                             placeholder="Yorumunuzu yazın..."
-                            required
-                        ></textarea>
+                            required></textarea>
 
                     </div>
 
                     <button
-                        class="btn btn-dark"
-                    >
+                        class="btn btn-dark">
 
                         Yorumu Gönder
 
@@ -315,7 +302,7 @@ if(isset($_SESSION["kullanici_id"])){
 
     <?php } ?>
 
-    <?php foreach($yorumlar as $yorum){ ?>
+    <?php foreach ($yorumlar as $yorum) { ?>
 
         <div class="card shadow-sm mb-3">
 
@@ -338,26 +325,25 @@ if(isset($_SESSION["kullanici_id"])){
                 <p class="mb-0">
                     <?php
 
-if(
-    isset($_SESSION["kullanici_id"])
-    &&
-    $_SESSION["kullanici_id"]
-    ==
-    $yorum["kullanici_id"]
-){
+                    if (
+                        isset($_SESSION["kullanici_id"])
+                        &&
+                        $_SESSION["kullanici_id"]
+                        ==
+                        $yorum["kullanici_id"]
+                    ) {
 
-?>
+                    ?>
 
-<a
-    href="yorum_sil.php?id=<?= $yorum["yorum_id"] ?>"
-    class="btn btn-sm btn-outline-danger mt-3"
->
+                        <a
+                            href="yorum_sil.php?id=<?= $yorum["yorum_id"] ?>"
+                            class="btn btn-sm btn-outline-danger mt-3">
 
-    Yorumu Sil
+                            Yorumu Sil
 
-</a>
+                        </a>
 
-<?php } ?>
+                    <?php } ?>
 
                     <?= nl2br(
                         htmlspecialchars(

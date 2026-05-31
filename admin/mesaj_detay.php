@@ -72,5 +72,3 @@ $mesaj = $sorgu->fetch(PDO::FETCH_ASSOC);
     </div>
 
 </div>
-
-<?php include "includes/footer.php"; ?>

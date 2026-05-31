@@ -3,11 +3,10 @@
 include "../config/baglan.php";
 include "../includes/session.php";
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: ../sayfalar/giris.php");
     exit;
-
 }
 
 $kullanici_id = $_SESSION["kullanici_id"];
@@ -29,7 +28,7 @@ $kontrol->execute([
 
 // Eğer yoksa ekle
 
-if($kontrol->rowCount() == 0){
+if ($kontrol->rowCount() == 0) {
 
     $ekle = $db->prepare("
         INSERT INTO favoriler
@@ -41,7 +40,6 @@ if($kontrol->rowCount() == 0){
         $kullanici_id,
         $urun_id
     ]);
-
 }
 
 // Geldiği sayfaya geri dön

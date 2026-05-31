@@ -1,10 +1,10 @@
  <?php
 
-$sepetAdet = 0;
+    $sepetAdet = 0;
 
-if(isset($_SESSION["kullanici_id"])){
+    if (isset($_SESSION["kullanici_id"])) {
 
-    $sorgu = $db->prepare("
+        $sorgu = $db->prepare("
         SELECT SUM(adet)
         FROM sepet_detaylari sd
         INNER JOIN sepet s
@@ -12,483 +12,452 @@ if(isset($_SESSION["kullanici_id"])){
         WHERE s.kullanici_id = ?
     ");
 
-    $sorgu->execute([
-        $_SESSION["kullanici_id"]
-    ]);
+        $sorgu->execute([
+            $_SESSION["kullanici_id"]
+        ]);
 
-    $sepetAdet = $sorgu->fetchColumn();
+        $sepetAdet = $sorgu->fetchColumn();
 
-    if(!$sepetAdet){
-        $sepetAdet = 0;
+        if (!$sepetAdet) {
+            $sepetAdet = 0;
+        }
     }
-}
-?>
+    ?>
  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
 
-    <div class="container">
+     <div class="container">
 
-        <!-- Sol Menü Butonu -->
+         <!-- Sol Menü Butonu -->
 
-        <button
-            class="btn btn-outline-dark me-3"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#yanMenu"
-        >
+         <button
+             class="btn btn-outline-dark me-3"
+             data-bs-toggle="offcanvas"
+             data-bs-target="#yanMenu">
 
-            <i class="bi bi-list"></i>
+             <i class="bi bi-list"></i>
 
-        </button>
+         </button>
 
-        <!-- Logo -->
+         <!-- Logo -->
 
-        <a
-            class="navbar-brand fw-bold"
-            href="/kozmetik_magazasi/index.php"
-        >
+         <a
+             class="navbar-brand fw-bold"
+             href="/kozmetik_magazasi/index.php">
 
-            VELOURA COSMETICS
+             VELOURA COSMETICS
 
-        </a>
+         </a>
 
-        <!-- Arama -->
+         <!-- Arama -->
 
-        <div class="position-relative w-50">
+         <div class="position-relative w-50">
 
-            <form
-                action="/kozmetik_magazasi/sayfalar/arama.php"
-                method="GET"
-                class="position-relative"
-            >
+             <form
+                 action="/kozmetik_magazasi/sayfalar/arama.php"
+                 method="GET"
+                 class="position-relative">
 
-                <div
-                    class="position-relative"
-                    style="width:580px;"
-                >
+                 <div
+                     class="position-relative"
+                     style="width:580px;">
 
-                    <!-- Arama İkonu -->
+                     <!-- Arama İkonu -->
 
-                    <i
-                        class="bi bi-search position-absolute"
-                        style="
+                     <i
+                         class="bi bi-search position-absolute"
+                         style="
                             left:15px;
                             top:50%;
                             transform:translateY(-50%);
                             z-index:10;
                             color:gray;
-                        "
-                    ></i>
+                        "></i>
 
-                    <!-- Input -->
+                     <!-- Input -->
 
-                    <input
-                        class="form-control ps-5"
-                        type="search"
-                        placeholder="Ürün ara..."
-                        id="aramaInput"
-                        name="arama"
-                    >
+                     <input
+                         class="form-control ps-5"
+                         type="search"
+                         placeholder="Ürün ara..."
+                         id="aramaInput"
+                         name="arama">
 
-                    <!-- Sonuç -->
+                     <!-- Sonuç -->
 
-                    <div
-                        id="aramaSonuc"
-                        class="bg-white shadow position-absolute w-100 rounded mt-1"
-                        style="
+                     <div
+                         id="aramaSonuc"
+                         class="bg-white shadow position-absolute w-100 rounded mt-1"
+                         style="
                         
                             z-index:9999;
                             max-height:400px;
                             overflow-y:auto;
-                        "
-                    ></div>
+                        "></div>
 
-                </div>
+                 </div>
 
-            </form>
+             </form>
 
-        </div>
+         </div>
 
-        <!-- Sağ Menü -->
+         <!-- Sağ Menü -->
 
-        <div class="d-flex align-items-center gap-3">
+         <div class="d-flex align-items-center gap-3">
 
-            <!-- Favoriler -->
+             <!-- Favoriler -->
 
-            <a
-                href="/kozmetik_magazasi/sayfalar/favoriler.php"
-                class="text-dark text-decoration-none d-flex flex-column align-items-center"
-            >
+             <a
+                 href="/kozmetik_magazasi/sayfalar/favoriler.php"
+                 class="text-dark text-decoration-none d-flex flex-column align-items-center">
 
-                <i class="bi bi-heart fs-5"></i>
+                 <i class="bi bi-heart fs-5"></i>
 
-                <small>
+                 <small>
 
-                    Favorilerim
+                     Favorilerim
 
-                </small>
+                 </small>
 
-            </a>
+             </a>
 
-            <!-- Kullanıcı -->
+             <!-- Kullanıcı -->
 
-            <?php if(isset($_SESSION["kullanici_id"])){ ?>
+             <?php if (isset($_SESSION["kullanici_id"])) { ?>
 
-                <a
-                    href="/kozmetik_magazasi/sayfalar/profil.php"
-                    class="text-dark text-decoration-none d-flex flex-column align-items-center"
-                >
+                 <a
+                     href="/kozmetik_magazasi/sayfalar/profil.php"
+                     class="text-dark text-decoration-none d-flex flex-column align-items-center">
 
-                    <i class="bi bi-person fs-5"></i>
+                     <i class="bi bi-person fs-5"></i>
 
-                    <small>
+                     <small>
 
-                        Hesabım
+                         Hesabım
 
-                    </small>
+                     </small>
 
-                </a>
+                 </a>
 
-            <?php }else{ ?>
+             <?php } else { ?>
 
-                <a
-                    href="/kozmetik_magazasi/sayfalar/giris.php"
-                    class="text-dark text-decoration-none d-flex flex-column align-items-center"
-                >
+                 <a
+                     href="/kozmetik_magazasi/sayfalar/giris.php"
+                     class="text-dark text-decoration-none d-flex flex-column align-items-center">
 
-                    <i class="bi bi-person fs-5"></i>
+                     <i class="bi bi-person fs-5"></i>
 
-                    <small>
+                     <small>
 
-                        Giriş Yap
+                         Giriş Yap
 
-                    </small>
+                     </small>
 
-                </a>
+                 </a>
 
-            <?php } ?>
+             <?php } ?>
 
-            <!-- Adres -->
+             <!-- Adres -->
 
-            <a
-                href="/kozmetik_magazasi/sayfalar/adresler.php"
-                class="text-dark text-decoration-none d-flex flex-column align-items-center"
-            >
+             <a
+                 href="/kozmetik_magazasi/sayfalar/adresler.php"
+                 class="text-dark text-decoration-none d-flex flex-column align-items-center">
 
-                <i class="bi bi-geo-alt fs-5"></i>
+                 <i class="bi bi-geo-alt fs-5"></i>
 
-                <small>
+                 <small>
 
-                    Adreslerim
+                     Adreslerim
 
-                </small>
+                 </small>
 
-            </a>
+             </a>
 
-            <!-- Sepet -->
-<a
-    href="/kozmetik_magazasi/sayfalar/sepet.php"
-    class="text-dark text-decoration-none d-flex flex-column align-items-center position-relative"
->
+             <!-- Sepet -->
+             <a
+                 href="/kozmetik_magazasi/sayfalar/sepet.php"
+                 class="text-dark text-decoration-none d-flex flex-column align-items-center position-relative">
 
-    <i class="bi bi-cart fs-5"></i>
+                 <i class="bi bi-cart fs-5"></i>
 
-    <?php if($sepetAdet > 0){ ?>
+                 <?php if ($sepetAdet > 0) { ?>
 
-        <span
-            class="position-absolute badge rounded-pill bg-danger"
-            style="
+                     <span
+                         class="position-absolute badge rounded-pill bg-danger"
+                         style="
                 top:-8px;
                 right:-12px;
                 font-size:11px;
-            "
-        >
-            <?= $sepetAdet ?>
-        </span>
+            ">
+                         <?= $sepetAdet ?>
+                     </span>
 
-    <?php } ?>
+                 <?php } ?>
 
-    <small>
-        Sepetim
-    </small>
+                 <small>
+                     Sepetim
+                 </small>
 
-</a>
+             </a>
 
-        </div>
+         </div>
 
-    </div>
+     </div>
 
-</nav>
+ </nav>
 
-<!-- Sol Açılır Menü -->
+ <!-- Sol Açılır Menü -->
 
-<!-- Sol Açılır Menü -->
+ <!-- Sol Açılır Menü -->
 
-<div
-    class="offcanvas offcanvas-start"
-    tabindex="-1"
-    id="yanMenu"
-    style="width:280px;"
->
+ <div
+     class="offcanvas offcanvas-start"
+     tabindex="-1"
+     id="yanMenu"
+     style="width:280px;">
 
-    <div class="offcanvas-header">
+     <div class="offcanvas-header">
 
-        <h5 class="fw-bold mb-0">
-    🛍️ Kategoriler
-</h5>
-        <button
-    type="button"
-    class="btn-close fs-4"
-    data-bs-dismiss="offcanvas"
-></button>
-    </div>
+         <h5 class="fw-bold mb-0">
+             🛍️ Kategoriler
+         </h5>
+         <button
+             type="button"
+             class="btn-close fs-4"
+             data-bs-dismiss="offcanvas"></button>
+     </div>
 
-    <div class="offcanvas-body">
-        <div
-    class="text-center p-3 rounded-4 mb-4"
-    style="
+     <div class="offcanvas-body">
+         <div
+             class="text-center p-3 rounded-4 mb-4"
+             style="
         background:linear-gradient(135deg,#f8d568,#f7b733);
         color:#000;
-    "
->
+    ">
 
-    <h5 class="fw-bold mb-1">
-        VELOURA COSMETICS
-    </h5>
+             <h5 class="fw-bold mb-1">
+                 VELOURA COSMETICS
+             </h5>
 
-    <small>
-        Güzelliğin yeni adresi ✨
-    </small>
+             <small>
+                 Güzelliğin yeni adresi ✨
+             </small>
 
-</div>
+         </div>
 
-        <div class="accordion" id="kategoriAccordion">
+         <div class="accordion" id="kategoriAccordion">
 
-            <!-- MAKYAJ -->
+             <!-- MAKYAJ -->
 
-            <div class="accordion-item">
+             <div class="accordion-item">
 
-                <h2 class="accordion-header">
+                 <h2 class="accordion-header">
 
-                    <button
-                        class="accordion-button"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#makyaj"
-                    >
+                     <button
+                         class="accordion-button"
+                         type="button"
+                         data-bs-toggle="collapse"
+                         data-bs-target="#makyaj">
 
-                        💄 Makyaj
+                         💄 Makyaj
 
-                    </button>
+                     </button>
 
-                </h2>
+                 </h2>
 
-                <div
-                    id="makyaj"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#kategoriAccordion"
-                >
+                 <div
+                     id="makyaj"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#kategoriAccordion">
 
-                    <div class="accordion-body p-0">
+                     <div class="accordion-body p-0">
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=13" class="list-group-item list-group-item-action">Ruj</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=13" class="list-group-item list-group-item-action">Ruj</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=14" class="list-group-item list-group-item-action">Maskara</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=14" class="list-group-item list-group-item-action">Maskara</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=15" class="list-group-item list-group-item-action">Fondöten</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=15" class="list-group-item list-group-item-action">Fondöten</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=16" class="list-group-item list-group-item-action">Allık</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=16" class="list-group-item list-group-item-action">Allık</a>
 
-                    </div>
+                     </div>
 
-                </div>
+                 </div>
 
-            </div>
+             </div>
 
-            <!-- CİLT BAKIMI -->
+             <!-- CİLT BAKIMI -->
 
-            <div class="accordion-item">
+             <div class="accordion-item">
 
-                <h2 class="accordion-header">
+                 <h2 class="accordion-header">
 
-                    <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#cilt"
-                    >
+                     <button
+                         class="accordion-button collapsed"
+                         type="button"
+                         data-bs-toggle="collapse"
+                         data-bs-target="#cilt">
 
-                        ✨ Cilt Bakımı
+                         ✨ Cilt Bakımı
 
-                    </button>
+                     </button>
 
-                </h2>
+                 </h2>
 
-                <div
-                    id="cilt"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#kategoriAccordion"
-                >
+                 <div
+                     id="cilt"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#kategoriAccordion">
 
-                    <div class="accordion-body p-0">
+                     <div class="accordion-body p-0">
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=17" class="list-group-item list-group-item-action">Nemlendirici</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=17" class="list-group-item list-group-item-action">Nemlendirici</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=18" class="list-group-item list-group-item-action">Temizleyici</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=18" class="list-group-item list-group-item-action">Temizleyici</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=19" class="list-group-item list-group-item-action">Serum</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=19" class="list-group-item list-group-item-action">Serum</a>
 
-                    </div>
+                     </div>
 
-                </div>
+                 </div>
 
-            </div>
+             </div>
 
-            <!-- SAÇ BAKIMI -->
+             <!-- SAÇ BAKIMI -->
 
-            <div class="accordion-item">
+             <div class="accordion-item">
 
-                <h2 class="accordion-header">
+                 <h2 class="accordion-header">
 
-                    <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#sac"
-                    >
+                     <button
+                         class="accordion-button collapsed"
+                         type="button"
+                         data-bs-toggle="collapse"
+                         data-bs-target="#sac">
 
-                        🧴 Saç Bakımı
+                         🧴 Saç Bakımı
 
-                    </button>
+                     </button>
 
-                </h2>
+                 </h2>
 
-                <div
-                    id="sac"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#kategoriAccordion"
-                >
+                 <div
+                     id="sac"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#kategoriAccordion">
 
-                    <div class="accordion-body p-0">
+                     <div class="accordion-body p-0">
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=20" class="list-group-item list-group-item-action">Şampuan</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=20" class="list-group-item list-group-item-action">Şampuan</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=21" class="list-group-item list-group-item-action">Saç Kremi</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=21" class="list-group-item list-group-item-action">Saç Kremi</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=22" class="list-group-item list-group-item-action">Saç Maskesi</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=22" class="list-group-item list-group-item-action">Saç Maskesi</a>
 
-                    </div>
+                     </div>
 
-                </div>
+                 </div>
 
-            </div>
+             </div>
 
-            <!-- PARFÜM -->
+             <!-- PARFÜM -->
 
-            <div class="accordion-item">
+             <div class="accordion-item">
 
-                <h2 class="accordion-header">
+                 <h2 class="accordion-header">
 
-                    <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#parfum"
-                    >
+                     <button
+                         class="accordion-button collapsed"
+                         type="button"
+                         data-bs-toggle="collapse"
+                         data-bs-target="#parfum">
 
-                        🌸 Parfüm
+                         🌸 Parfüm
 
-                    </button>
+                     </button>
 
-                </h2>
+                 </h2>
 
-                <div
-                    id="parfum"
-                    class="accordion-collapse collapse"
-                    data-bs-parent="#kategoriAccordion"
-                >
+                 <div
+                     id="parfum"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#kategoriAccordion">
 
-                    <div class="accordion-body p-0">
+                     <div class="accordion-body p-0">
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=23" class="list-group-item list-group-item-action">Kadın Parfümü</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=23" class="list-group-item list-group-item-action">Kadın Parfümü</a>
 
-                        <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=24" class="list-group-item list-group-item-action">Erkek Parfümü</a>
+                         <a href="/kozmetik_magazasi/sayfalar/kategori.php?alt_kategori_id=24" class="list-group-item list-group-item-action">Erkek Parfümü</a>
 
-                    </div>
+                     </div>
 
-                </div>
-                <!-- KURUMSAL -->
+                 </div>
+                 <!-- KURUMSAL -->
 
-<div class="accordion-item">
+                 <div class="accordion-item">
 
-    <h2 class="accordion-header">
+                     <h2 class="accordion-header">
 
-        <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#kurumsal"
-        >
+                         <button
+                             class="accordion-button collapsed"
+                             type="button"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#kurumsal">
 
-            🏢 Kurumsal
+                             🏢 Kurumsal
 
-        </button>
+                         </button>
 
-    </h2>
+                     </h2>
 
-    <div
-        id="kurumsal"
-        class="accordion-collapse collapse"
-        data-bs-parent="#kategoriAccordion"
-    >
+                     <div
+                         id="kurumsal"
+                         class="accordion-collapse collapse"
+                         data-bs-parent="#kategoriAccordion">
 
-        <div class="accordion-body p-0">
+                         <div class="accordion-body p-0">
 
-            <a
-    href="/kozmetik_magazasi/sayfalar/hakkimizda.php"
-    class="list-group-item list-group-item-action"
->
+                             <a
+                                 href="/kozmetik_magazasi/sayfalar/hakkimizda.php"
+                                 class="list-group-item list-group-item-action">
 
-    Hakkımızda
+                                 Hakkımızda
 
-</a>
+                             </a>
 
-            <a
-                href="/kozmetik_magazasi/sayfalar/iletisim.php"
-                class="list-group-item list-group-item-action"
-            >
-                İletişim
-            </a>
+                             <a
+                                 href="/kozmetik_magazasi/sayfalar/iletisim.php"
+                                 class="list-group-item list-group-item-action">
+                                 İletişim
+                             </a>
 
-            <a
-                href="/kozmetik_magazasi/sayfalar/sss.php"
-                class="list-group-item list-group-item-action"
-            >
-                Sık Sorulan Sorular
-            </a>
+                             <a
+                                 href="/kozmetik_magazasi/sayfalar/sss.php"
+                                 class="list-group-item list-group-item-action">
+                                 Sık Sorulan Sorular
+                             </a>
 
-            <a
-               href="/kozmetik_magazasi/sayfalar/iade.php"
-                class="list-group-item list-group-item-action"
-            >
-                İade Politikası
-            </a>
+                             <a
+                                 href="/kozmetik_magazasi/sayfalar/iade.php"
+                                 class="list-group-item list-group-item-action">
+                                 İade Politikası
+                             </a>
 
-            <a
-                href="/kozmetik_magazasi/sayfalar/gizlilik.php"
-                class="list-group-item list-group-item-action"
-            >
-                Gizlilik Politikası
-            </a>
+                             <a
+                                 href="/kozmetik_magazasi/sayfalar/gizlilik.php"
+                                 class="list-group-item list-group-item-action">
+                                 Gizlilik Politikası
+                             </a>
 
-        </div>
+                         </div>
 
-    </div>
+                     </div>
 
-</div>
+                 </div>
 
-            </div>
+             </div>
 
-        </div>
+         </div>
 
-    </div>
+     </div>
 
-</div>
+ </div>

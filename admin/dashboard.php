@@ -109,7 +109,7 @@ $teslim = $db->query("
 ?>
 
 <div class="admin-content">
-    
+
     <h2 class="fw-bold mb-4">
 
         Dashboard
@@ -118,213 +118,212 @@ $teslim = $db->query("
 
     <div class="alert alert-primary border-0 shadow-sm mb-4">
 
-    Hoş geldin
-    <strong>
-        <?= $_SESSION["admin_ad"] ?>
-    </strong>
+        Hoş geldin
+        <strong>
+            <?= $_SESSION["admin_ad"] ?>
+        </strong>
 
-    👋 Yönetim paneline başarıyla giriş yaptınız.
+        👋 Yönetim paneline başarıyla giriş yaptınız.
 
-</div>
+    </div>
 
     <!-- İstatistik Kartları -->
 
-<div class="row g-4 mb-5">
+    <div class="row g-4 mb-5">
 
-    <!-- Ürün -->
+        <!-- Ürün -->
 
-    <div class="col-md-4 col-lg">
+        <div class="col-md-4 col-lg">
 
-    <div class="card dashboard-card bg-primary text-white">
+            <div class="card dashboard-card bg-primary text-white">
 
-        <div class="card-body text-center">
+                <div class="card-body text-center">
 
-            <div class="dashboard-icon">
-                📦
+                    <div class="dashboard-icon">
+                        📦
+                    </div>
+
+                    <div class="dashboard-number">
+                        <?= $urunSayisi["toplam"] ?>
+                    </div>
+
+                    <div class="dashboard-title">
+                        Toplam Ürün
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="dashboard-number">
-                <?= $urunSayisi["toplam"] ?>
+        </div>
+
+        <!-- Kullanıcı -->
+
+        <div class="col-md-4 col-lg">
+
+            <div class="card dashboard-card bg-purple text-white">
+
+                <div class="card-body text-center">
+
+                    <div class="dashboard-icon">
+                        👤
+                    </div>
+
+                    <div class="dashboard-number">
+                        <?= $kullaniciSayisi["toplam"] ?>
+                    </div>
+
+                    <div class="dashboard-title">
+                        Kullanıcı
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="dashboard-title">
-                Toplam Ürün
+        </div>
+
+        <!-- Sipariş -->
+
+        <div class="col-md-4 col-lg">
+
+            <div class="card dashboard-card bg-success text-white">
+
+                <div class="card-body text-center">
+
+                    <div class="dashboard-icon">
+                        🛒
+                    </div>
+
+                    <div class="dashboard-number">
+                        <?= $siparisSayisi["toplam"] ?>
+                    </div>
+
+                    <div class="dashboard-title">
+                        Sipariş
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 col-lg">
+
+            <div class="card dashboard-card bg-warning text-dark">
+
+                <div class="card-body text-center">
+
+                    <div class="dashboard-icon">
+                        💬
+                    </div>
+
+                    <div class="dashboard-number">
+                        <?= $yorumSayisi ?>
+                    </div>
+
+                    <div class="dashboard-title">
+                        Yorum
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Mesaj -->
+
+        <div class="col-md-4 col-lg">
+
+            <div class="card dashboard-card bg-info text-white">
+
+                <div class="card-body text-center">
+
+                    <div class="dashboard-icon">
+                        ✉️
+                    </div>
+
+                    <div class="dashboard-number">
+                        <?= $mesajSayisi["toplam"] ?>
+                    </div>
+
+                    <div class="dashboard-title">
+                        Mesaj
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-4 col-lg-2">
+
+        <div class="card dashboard-card bg-danger text-white">
+
+            <div class="card-body text-center">
+
+                <div class="dashboard-icon">
+                    💰
+                </div>
+
+                <div class="dashboard-number">
+                    ₺<?= number_format($kazanc["toplam"] ?? 0, 0, ",", ".") ?>
+                </div>
+
+                <div class="dashboard-title">
+                    Kazanç
+                </div>
+
             </div>
 
         </div>
 
     </div>
 
-</div>
 
-    <!-- Kullanıcı -->
+    <div class="card shadow mt-4 mb-4">
 
-    <div class="col-md-4 col-lg">
+        <div class="card-body">
 
-    <div class="card dashboard-card bg-purple text-white">
+            <h5 class="mb-4">
 
-        <div class="card-body text-center">
+                Sipariş Durum Dağılımı
 
-            <div class="dashboard-icon">
-                👤
-            </div>
+            </h5>
 
-            <div class="dashboard-number">
-                <?= $kullaniciSayisi["toplam"] ?>
-            </div>
-
-            <div class="dashboard-title">
-                Kullanıcı
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-    <!-- Sipariş -->
-
-    <div class="col-md-4 col-lg">
-
-    <div class="card dashboard-card bg-success text-white">
-
-        <div class="card-body text-center">
-
-            <div class="dashboard-icon">
-                🛒
-            </div>
-
-            <div class="dashboard-number">
-                <?= $siparisSayisi["toplam"] ?>
-            </div>
-
-            <div class="dashboard-title">
-                Sipariş
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-    
-<div class="col-md-4 col-lg">
-
-    <div class="card dashboard-card bg-warning text-dark">
-
-        <div class="card-body text-center">
-
-            <div class="dashboard-icon">
-                💬
-            </div>
-
-            <div class="dashboard-number">
-                <?= $yorumSayisi ?>
-            </div>
-
-            <div class="dashboard-title">
-                Yorum
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-    <!-- Mesaj -->
-
-    <div class="col-md-4 col-lg">
-
-    <div class="card dashboard-card bg-info text-white">
-
-        <div class="card-body text-center">
-
-            <div class="dashboard-icon">
-                ✉️
-            </div>
-
-            <div class="dashboard-number">
-                <?= $mesajSayisi["toplam"] ?>
-            </div>
-
-            <div class="dashboard-title">
-                Mesaj
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</div>
-       <div class="col-md-4 col-lg-2">
-
-    <div class="card dashboard-card bg-danger text-white">
-
-        <div class="card-body text-center">
-
-            <div class="dashboard-icon">
-                💰
-            </div>
-
-            <div class="dashboard-number">
-                ₺<?= number_format($kazanc["toplam"] ?? 0,0,",",".") ?>
-            </div>
-
-            <div class="dashboard-title">
-                Kazanç
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="card shadow mt-4 mb-4">
-
-    <div class="card-body">
-
-        <h5 class="mb-4">
-
-            Sipariş Durum Dağılımı
-
-        </h5>
-
-        <div
-            style="
+            <div
+                style="
                 max-width:450px;
                 margin:auto;
-            "
-        >
+            ">
 
-            <canvas id="durumGrafik"></canvas>
+                <canvas id="durumGrafik"></canvas>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
-
     <!-- Alt Kısım -->
-<div class="card shadow mt-4 mb-4">
+    <div class="card shadow mt-4 mb-4">
 
-    <div class="card-body">
+        <div class="card-body">
 
-        <h5 class="mb-4 fw-bold">
-    📩 Son Gelen Mesajlar
-</h5>
+            <h5 class="mb-4 fw-bold">
+                📩 Son Gelen Mesajlar
+            </h5>
 
-        <?php if(count($sonMesajlar) > 0){ ?>
+            <?php if (count($sonMesajlar) > 0) { ?>
 
-            <?php foreach($sonMesajlar as $mesaj){ ?>
+                <?php foreach ($sonMesajlar as $mesaj) { ?>
 
-                <div
-    class="
+                    <div
+                        class="
      message-item
         d-flex
         justify-content-between
@@ -333,61 +332,59 @@ $teslim = $db->query("
         mb-3
         bg-light
         rounded-4
-    "
->
+    ">
 
-    <div>
+                        <div>
 
-        <div class="fw-bold">
+                            <div class="fw-bold">
 
-            👤
-            <?= htmlspecialchars($mesaj["ad_soyad"]) ?>
+                                👤
+                                <?= htmlspecialchars($mesaj["ad_soyad"]) ?>
 
-        </div>
+                            </div>
 
-        <div class="text-muted small mt-1">
+                            <div class="text-muted small mt-1">
 
-            <?= substr(
-                htmlspecialchars($mesaj["mesaj"]),
-                0,
-                70
-            ) ?>
+                                <?= substr(
+                                    htmlspecialchars($mesaj["mesaj"]),
+                                    0,
+                                    70
+                                ) ?>
 
-            ...
+                                ...
 
-        </div>
+                            </div>
 
-    </div>
+                        </div>
 
-    <a
-        href="mesaj_detay.php?id=<?= $mesaj["mesaj_id"] ?>"
-        class="btn btn-primary btn-sm"
-    >
+                        <a
+                            href="mesaj_detay.php?id=<?= $mesaj["mesaj_id"] ?>"
+                            class="btn btn-primary btn-sm">
 
-        Aç
+                            Aç
 
-    </a>
+                        </a>
 
-</div>
+                    </div>
 
-                   
-    
+
+
+
+                <?php } ?>
+
+            <?php } else { ?>
+
+                <div class="alert alert-info mb-0">
+
+                    Henüz mesaj bulunmuyor.
+
+                </div>
 
             <?php } ?>
 
-        <?php }else{ ?>
-
-            <div class="alert alert-info mb-0">
-
-                Henüz mesaj bulunmuyor.
-
-            </div>
-
-        <?php } ?>
+        </div>
 
     </div>
-
-</div>
     <div class="row g-">
 
         <!-- Son Siparişler -->
@@ -399,8 +396,8 @@ $teslim = $db->query("
                 <div class="card-body">
 
                     <h5 class="mb-4 fw-bold">
-    🛒 Son Siparişler
-</h5>
+                        🛒 Son Siparişler
+                    </h5>
                     <table class="table align-middle">
 
                         <thead>
@@ -419,15 +416,15 @@ $teslim = $db->query("
 
                         <tbody>
 
-                            <?php foreach($sonSiparisler as $siparis){ ?>
+                            <?php foreach ($sonSiparisler as $siparis) { ?>
 
                                 <tr>
 
                                     <td>
 
-                                       <span class="fw-bold text-primary">
-    #<?= $siparis["siparis_id"] ?>
-</span>
+                                        <span class="fw-bold text-primary">
+                                            #<?= $siparis["siparis_id"] ?>
+                                        </span>
                                     </td>
 
                                     <td>
@@ -446,43 +443,42 @@ $teslim = $db->query("
 
                                     <td>
 
-<?php if($siparis["siparis_durumu"] == "hazirlaniyor"){ ?>
+                                        <?php if ($siparis["siparis_durumu"] == "hazirlaniyor") { ?>
 
-    <span class="badge bg-warning text-dark">
-        Hazırlanıyor
-    </span>
+                                            <span class="badge bg-warning text-dark">
+                                                Hazırlanıyor
+                                            </span>
 
-<?php }elseif($siparis["siparis_durumu"] == "kargoya verildi"){ ?>
+                                        <?php } elseif ($siparis["siparis_durumu"] == "kargoya verildi") { ?>
 
-    <span class="badge bg-primary">
-        Kargoya Verildi
-    </span>
+                                            <span class="badge bg-primary">
+                                                Kargoya Verildi
+                                            </span>
 
-<?php }elseif($siparis["siparis_durumu"] == "teslim edildi"){ ?>
+                                        <?php } elseif ($siparis["siparis_durumu"] == "teslim edildi") { ?>
 
-    <span class="badge bg-success">
-        Teslim Edildi
-    </span>
+                                            <span class="badge bg-success">
+                                                Teslim Edildi
+                                            </span>
 
-<?php }else{ ?>
+                                        <?php } else { ?>
 
-    <span class="badge bg-secondary">
-        Belirsiz
-    </span>
+                                            <span class="badge bg-secondary">
+                                                Belirsiz
+                                            </span>
 
-<?php } ?>
-<td>
+                                        <?php } ?>
+                                    <td>
 
-    <a
-        href="siparis_detaylari.php?id=<?= $siparis["siparis_id"] ?>"
-        class="btn btn-sm btn-dark"
-    >
-        Detay
-    </a>
+                                        <a
+                                            href="siparis_detaylari.php?id=<?= $siparis["siparis_id"] ?>"
+                                            class="btn btn-sm btn-dark">
+                                            Detay
+                                        </a>
 
-</td>
+                                    </td>
 
-</td>
+                                    </td>
                                 </tr>
 
                             <?php } ?>
@@ -511,13 +507,12 @@ $teslim = $db->query("
 
                     </h5>
 
-                    <?php if(count($stoklar) > 0){ ?>
+                    <?php if (count($stoklar) > 0) { ?>
 
-                        <?php foreach($stoklar as $urun){ ?>
+                        <?php foreach ($stoklar as $urun) { ?>
 
                             <div
-                                class="d-flex justify-content-between border-bottom py-2"
-                            >
+                                class="d-flex justify-content-between border-bottom py-2">
 
                                 <span>
 
@@ -535,7 +530,7 @@ $teslim = $db->query("
 
                         <?php } ?>
 
-                    <?php }else{ ?>
+                    <?php } else { ?>
 
                         <div class="alert alert-success mb-0">
 
@@ -552,51 +547,50 @@ $teslim = $db->query("
         </div>
         <div class="card shadow mt-4">
 
-    <div class="card-body">
+            <div class="card-body">
 
-       <h5 class="mb-4 text-warning fw-bold">
-    🏆 En Çok Satan Ürünler
-</h5>
+                <h5 class="mb-4 text-warning fw-bold">
+                    🏆 En Çok Satan Ürünler
+                </h5>
 
-        <?php if(count($enCokSatanlar) > 0){ ?>
+                <?php if (count($enCokSatanlar) > 0) { ?>
 
-            <?php foreach($enCokSatanlar as $urun){ ?>
+                    <?php foreach ($enCokSatanlar as $urun) { ?>
 
-                <div
-                    class="d-flex justify-content-between border-bottom py-2"
-                >
+                        <div
+                            class="d-flex justify-content-between border-bottom py-2">
 
-                    <span>
+                            <span>
 
-                        <?= htmlspecialchars($urun["urun_adi"]) ?>
+                                <?= htmlspecialchars($urun["urun_adi"]) ?>
 
-                    </span>
+                            </span>
 
-                    <span class="fw-bold text-success">
+                            <span class="fw-bold text-success">
 
-                        <?= $urun["toplam_satis"] ?>
+                                <?= $urun["toplam_satis"] ?>
 
-                        adet
+                                adet
 
-                    </span>
+                            </span>
 
-                </div>
+                        </div>
 
-            <?php } ?>
+                    <?php } ?>
 
-        <?php }else{ ?>
+                <?php } else { ?>
 
-            <div class="alert alert-info mb-0">
+                    <div class="alert alert-info mb-0">
 
-                Henüz satış bulunmuyor.
+                        Henüz satış bulunmuyor.
+
+                    </div>
+
+                <?php } ?>
 
             </div>
 
-        <?php } ?>
-
-    </div>
-
-</div>
+        </div>
 
     </div>
 
@@ -604,68 +598,64 @@ $teslim = $db->query("
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+    const durumCtx =
+        document.getElementById(
+            'durumGrafik'
+        );
 
-const durumCtx =
-document.getElementById(
-    'durumGrafik'
-);
+    new Chart(durumCtx, {
 
-new Chart(durumCtx, {
+        type: 'doughnut',
 
-    type: 'doughnut',
+        data: {
 
-    data: {
+            labels: [
 
-        labels: [
-
-            'Hazırlanıyor',
-            'Kargoya Verildi',
-            'Teslim Edildi'
-
-        ],
-
-        datasets: [{
-
-            data: [
-
-                <?= $hazirlaniyor ?>,
-                <?= $kargoda ?>,
-                <?= $teslim ?>
+                'Hazırlanıyor',
+                'Kargoya Verildi',
+                'Teslim Edildi'
 
             ],
 
-            backgroundColor: [
+            datasets: [{
 
-                '#ffc107',
-                '#0d6efd',
-                '#198754'
+                data: [
 
-            ],
+                    <?= $hazirlaniyor ?>,
+                    <?= $kargoda ?>,
+                    <?= $teslim ?>
 
-            borderWidth:0
+                ],
 
-        }]
+                backgroundColor: [
 
-    },
+                    '#ffc107',
+                    '#0d6efd',
+                    '#198754'
 
-    options: {
+                ],
 
-        responsive:true,
+                borderWidth: 0
 
-        plugins: {
+            }]
 
-            legend: {
+        },
 
-                position:'bottom'
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                legend: {
+
+                    position: 'bottom'
+
+                }
 
             }
 
         }
 
-    }
-
-});
-
+    });
 </script>
-
-<?php include "includes/footer.php"; ?>

@@ -8,7 +8,7 @@ $arama = "";
 
 $urunler = [];
 
-if(isset($_GET["kelime"])){
+if (isset($_GET["kelime"])) {
 
     $arama = trim($_GET["kelime"]);
 
@@ -24,7 +24,6 @@ if(isset($_GET["kelime"])){
     ]);
 
     $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
-
 }
 
 ?>
@@ -40,9 +39,9 @@ if(isset($_GET["kelime"])){
 
     <div class="row g-4">
 
-        <?php if(count($urunler) > 0){ ?>
+        <?php if (count($urunler) > 0) { ?>
 
-            <?php foreach($urunler as $urun){ ?>
+            <?php foreach ($urunler as $urun) { ?>
 
                 <div class="col-md-3">
 
@@ -54,61 +53,58 @@ if(isset($_GET["kelime"])){
                             style="
                                 height:250px;
                                 object-fit:cover;
-                            "
-                        >
+                            ">
 
                         <div class="card-body text-center">
 
-    <!-- Ürün Adı -->
+                            <!-- Ürün Adı -->
 
-    <h5 class="fw-bold">
+                            <h5 class="fw-bold">
 
-        <?= $urun["urun_adi"] ?>
+                                <?= $urun["urun_adi"] ?>
 
-    </h5>
+                            </h5>
 
-    <!-- Fiyat -->
+                            <!-- Fiyat -->
 
-    <p class="text-dark fw-bold">
+                            <p class="text-dark fw-bold">
 
-        ₺<?= $urun["fiyat"] ?>
+                                ₺<?= $urun["fiyat"] ?>
 
-    </p>
+                            </p>
 
-    <!-- Butonlar -->
+                            <!-- Butonlar -->
 
-    <div class="d-flex justify-content-center gap-2">
+                            <div class="d-flex justify-content-center gap-2">
 
-        <!-- Sepete Ekle -->
+                                <!-- Sepete Ekle -->
 
-        <a
-            href="../ajax/sepete_ekle.php?id=<?= $urun["urun_id"] ?>"
-            class="btn btn-dark"
-        >
+                                <a
+                                    href="../ajax/sepete_ekle.php?id=<?= $urun["urun_id"] ?>"
+                                    class="btn btn-dark">
 
-            Sepete Ekle
+                                    Sepete Ekle
 
-        </a>
+                                </a>
 
-        <!-- Favori -->
+                                <!-- Favori -->
 
-        <a
-            href="../ajax/favori_ekle.php?id=<?= $urun["urun_id"] ?>"
-            class="btn btn-outline-danger"
-        >
+                                <a
+                                    href="../ajax/favori_ekle.php?id=<?= $urun["urun_id"] ?>"
+                                    class="btn btn-outline-danger">
 
-            <i class="bi bi-heart"></i>
+                                    <i class="bi bi-heart"></i>
 
-        </a>
+                                </a>
 
-    </div>
+                            </div>
 
-</div>
+                        </div>
 
                         <div class="card-footer bg-white border-0">
 
                             <a href="urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                               class="btn btn-dark w-100">
+                                class="btn btn-dark w-100">
 
                                 Ürünü İncele
 
@@ -122,7 +118,7 @@ if(isset($_GET["kelime"])){
 
             <?php } ?>
 
-        <?php }else{ ?>
+        <?php } else { ?>
 
             <div class="alert alert-danger">
 

@@ -37,86 +37,85 @@ ORDER BY y.yorum_id DESC
     </h2>
 
 
-<div class="card shadow border-0 rounded-4">
+    <div class="card shadow border-0 rounded-4">
 
-<div class="card-body">
+        <div class="card-body">
 
-<table class="table align-middle">
+            <table class="table align-middle">
 
-<thead>
+                <thead>
 
-<tr>
-<th>#</th>
-<th>Kullanıcı</th>
-<th>Ürün</th>
-<th>Puan</th>
-<th>Yorum</th>
-<th>Tarih</th>
-<th>İşlem</th>
-</tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Kullanıcı</th>
+                        <th>Ürün</th>
+                        <th>Puan</th>
+                        <th>Yorum</th>
+                        <th>Tarih</th>
+                        <th>İşlem</th>
+                    </tr>
 
-</thead>
+                </thead>
 
-<tbody>
+                <tbody>
 
-<?php foreach($yorumlar as $yorum){ ?>
+                    <?php foreach ($yorumlar as $yorum) { ?>
 
-<tr>
+                        <tr>
 
-<td>
-<?= $yorum["yorum_id"] ?>
-</td>
+                            <td>
+                                <?= $yorum["yorum_id"] ?>
+                            </td>
 
-<td>
-<?= $yorum["ad"] ?>
-<?= $yorum["soyad"] ?>
-</td>
+                            <td>
+                                <?= $yorum["ad"] ?>
+                                <?= $yorum["soyad"] ?>
+                            </td>
 
-<td>
-<?= $yorum["urun_adi"] ?>
-</td>
+                            <td>
+                                <?= $yorum["urun_adi"] ?>
+                            </td>
 
-<td>
+                            <td>
 
-<?php
-for($i=1;$i<=$yorum["puan"];$i++){
-    echo "⭐";
-}
-?>
+                                <?php
+                                for ($i = 1; $i <= $yorum["puan"]; $i++) {
+                                    echo "⭐";
+                                }
+                                ?>
 
-</td>
+                            </td>
 
-<td width="400">
-<?= htmlspecialchars($yorum["yorum"]) ?>
-</td>
+                            <td width="400">
+                                <?= htmlspecialchars($yorum["yorum"]) ?>
+                            </td>
 
-<td>
-<?= date("d.m.Y H:i",strtotime($yorum["tarih"])) ?>
-</td>
+                            <td>
+                                <?= date("d.m.Y H:i", strtotime($yorum["tarih"])) ?>
+                            </td>
 
-<td>
+                            <td>
 
-<a href="yorum_sil.php?id=<?= $yorum["yorum_id"] ?>"
-class="btn btn-sm btn-danger"
-onclick="return confirm('Yorumu silmek istiyor musunuz?')">
+                                <a href="yorum_sil.php?id=<?= $yorum["yorum_id"] ?>"
+                                    class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Yorumu silmek istiyor musunuz?')">
 
-Sil
+                                    Sil
 
-</a>
+                                </a>
 
-</td>
+                            </td>
 
-</tr>
+                        </tr>
 
-<?php } ?>
+                    <?php } ?>
 
-</tbody>
+                </tbody>
 
-</table>
+            </table>
+
+        </div>
+
+    </div>
 
 </div>
-
-</div>
-
-</div>
-<?php include "includes/footer.php"; ?>

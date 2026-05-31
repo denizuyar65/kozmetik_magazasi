@@ -9,12 +9,11 @@ include "../includes/menu.php";
 
 // giriş kontrol
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: giris.php");
 
     exit;
-
 }
 
 $kullanici_id =
@@ -49,8 +48,7 @@ $adresler =
 
         <a
             href="adres_ekle.php"
-            class="btn btn-dark"
-        >
+            class="btn btn-dark">
 
             Yeni Adres Ekle
 
@@ -58,11 +56,11 @@ $adresler =
 
     </div>
 
-    <?php if(count($adresler) > 0){ ?>
+    <?php if (count($adresler) > 0) { ?>
 
         <div class="row g-4">
 
-            <?php foreach($adresler as $adres){ ?>
+            <?php foreach ($adresler as $adres) { ?>
 
                 <div class="col-md-6">
 
@@ -96,7 +94,7 @@ $adresler =
 
         </div>
 
-    <?php }else{ ?>
+    <?php } else { ?>
 
         <div class="alert alert-warning">
 

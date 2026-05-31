@@ -10,10 +10,9 @@ include "../includes/menu.php";
 
 // Kullanıcı kontrolü
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     die("Lütfen giriş yapın.");
-
 }
 
 $kullanici_id =
@@ -47,13 +46,12 @@ $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
 $toplam = 0;
 
-foreach($urunler as $urun){
+foreach ($urunler as $urun) {
 
     $toplam +=
         $urun["fiyat"]
         *
         $urun["adet"];
-
 }
 
 ?>
@@ -70,7 +68,7 @@ foreach($urunler as $urun){
 
     </div>
 
-    <?php if(count($urunler) > 0){ ?>
+    <?php if (count($urunler) > 0) { ?>
 
         <div class="row g-4">
 
@@ -78,7 +76,7 @@ foreach($urunler as $urun){
 
             <div class="col-md-8">
 
-                <?php foreach($urunler as $urun){ ?>
+                <?php foreach ($urunler as $urun) { ?>
 
                     <div class="card border-0 shadow-sm mb-4">
 
@@ -95,8 +93,7 @@ foreach($urunler as $urun){
                                         height:200px;
                                         width:100%;
                                         object-fit:cover;
-                                    "
-                                >
+                                    ">
 
                             </div>
 
@@ -134,13 +131,12 @@ foreach($urunler as $urun){
                             <div class="col-md-3 text-center">
 
                                 <a
-                                 href="/kozmetik_magazasi/ajax/sepet_sil.php?id=<?= $urun["sepet_detay_id"] ?>"
-                                 class="btn btn-danger"
-                                 >
+                                    href="/kozmetik_magazasi/ajax/sepet_sil.php?id=<?= $urun["sepet_detay_id"] ?>"
+                                    class="btn btn-danger">
 
-                                  Sil
+                                    Sil
 
-                                   </a>
+                                </a>
                             </div>
 
                         </div>
@@ -166,8 +162,7 @@ foreach($urunler as $urun){
                         </h4>
 
                         <div
-                            class="d-flex justify-content-between mb-3"
-                        >
+                            class="d-flex justify-content-between mb-3">
 
                             <span>
 
@@ -187,8 +182,7 @@ foreach($urunler as $urun){
 
                         <a
                             href="odeme.php"
-                            class="btn btn-dark w-100"
-                        >
+                            class="btn btn-dark w-100">
 
                             Ödemeye Geç
 
@@ -202,7 +196,7 @@ foreach($urunler as $urun){
 
         </div>
 
-    <?php }else{ ?>
+    <?php } else { ?>
 
         <div class="alert alert-warning">
 

@@ -7,7 +7,7 @@ include "../includes/header.php";
 
 $mesaj = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = trim($_POST["email"]);
     $sifre = trim($_POST["sifre"]);
@@ -22,9 +22,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $kullanici = $sorgu->fetch(PDO::FETCH_ASSOC);
 
-    if($kullanici){
+    if ($kullanici) {
 
-        if(password_verify($sifre, $kullanici["sifre"])){
+        if (password_verify($sifre, $kullanici["sifre"])) {
 
             $_SESSION["kullanici_id"] =
                 $kullanici["kullanici_id"];
@@ -37,19 +37,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             header("Location: ../index.php");
             exit;
-
-        }else{
+        } else {
 
             $mesaj = "Şifre yanlış.";
-
         }
-
-    }else{
+    } else {
 
         $mesaj = "Kullanıcı bulunamadı.";
-
     }
-
 }
 
 ?>
@@ -68,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         Giriş Yap
                     </h2>
 
-                    <?php if($mesaj != ""){ ?>
+                    <?php if ($mesaj != "") { ?>
 
                         <div class="alert alert-danger">
                             <?= $mesaj ?>
@@ -82,8 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             background:linear-gradient(135deg,#ff6b6b,#ffb347);
                             color:white;
                             border-radius:20px;
-                        "
-                    >
+                        ">
 
                         <div class="card-body text-center p-4">
 
@@ -110,16 +104,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             name="email"
                             class="form-control mb-3"
                             placeholder="Email"
-                            required
-                        >
+                            required>
 
                         <input
                             type="password"
                             name="sifre"
                             class="form-control mb-3"
                             placeholder="Şifre"
-                            required
-                        >
+                            required>
 
                         <button class="btn btn-dark w-100">
                             Giriş Yap

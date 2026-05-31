@@ -5,7 +5,7 @@ session_start();
 include "../config/baglan.php";
 include "../includes/header.php";
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: giris.php");
     exit;
@@ -32,7 +32,7 @@ $siparisler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
         📦 Siparişlerim
     </h2>
 
-    <?php if(count($siparisler) > 0){ ?>
+    <?php if (count($siparisler) > 0) { ?>
 
         <div class="card shadow border-0">
 
@@ -56,91 +56,87 @@ $siparisler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                     <tbody>
 
-                        <?php foreach($siparisler as $siparis){ ?>
+                        <?php foreach ($siparisler as $siparis) { ?>
 
-                        <tr>
+                            <tr>
 
-                            <td>
+                                <td>
 
-                                #<?= $siparis["siparis_id"] ?>
+                                    #<?= $siparis["siparis_id"] ?>
 
-                            </td>
+                                </td>
 
-                            <td>
+                                <td>
 
-                                <?= date(
-                                    "d.m.Y H:i",
-                                    strtotime(
-                                        $siparis["olusturma_tarihi"]
-                                    )
-                                ) ?>
+                                    <?= date(
+                                        "d.m.Y H:i",
+                                        strtotime(
+                                            $siparis["olusturma_tarihi"]
+                                        )
+                                    ) ?>
 
-                            </td>
+                                </td>
 
-                            <td>
+                                <td>
 
-                                ₺<?= number_format(
-                                    $siparis["toplam_tutar"],
-                                    2,
-                                    ",",
-                                    "."
-                                ) ?>
+                                    ₺<?= number_format(
+                                            $siparis["toplam_tutar"],
+                                            2,
+                                            ",",
+                                            "."
+                                        ) ?>
 
-                            </td>
+                                </td>
 
-                            <td>
+                                <td>
 
-                                <?php
+                                    <?php
 
-                                if(
-                                    $siparis["siparis_durumu"]
-                                    ==
-                                    "hazirlaniyor"
-                                ){
+                                    if (
+                                        $siparis["siparis_durumu"]
+                                        ==
+                                        "hazirlaniyor"
+                                    ) {
 
-                                    echo '
+                                        echo '
                                     <span class="badge bg-warning text-dark">
                                         Hazırlanıyor
                                     </span>';
+                                    } elseif (
+                                        $siparis["siparis_durumu"]
+                                        ==
+                                        "kargoya verildi"
+                                    ) {
 
-                                }elseif(
-                                    $siparis["siparis_durumu"]
-                                    ==
-                                    "kargoya verildi"
-                                ){
-
-                                    echo '
+                                        echo '
                                     <span class="badge bg-primary">
                                         Kargoya Verildi
                                     </span>';
+                                    } else {
 
-                                }else{
-
-                                    echo '
+                                        echo '
                                     <span class="badge bg-success">
                                         Teslim Edildi
                                     </span>';
+                                    }
 
-                                }
+                                    ?>
 
-                                ?>
+                                </td>
 
-                            </td>
+                                <td>
 
-                            <td>
+                                    <a
+                                        href="siparis_detay.php?id=<?= $siparis["siparis_id"] ?>"
+                                        class="btn btn-dark btn-sm">
 
-                                <a
-                                    href="siparis_detay.php?id=<?= $siparis["siparis_id"] ?>"
-                                    class="btn btn-dark btn-sm"
-                                >
+                                        Detay
 
-                                    Detay
+                                    </a>
 
-                                </a>
+                                </td>
 
-                            </td>
-
-                        </tr>
+                            </tr>
 
                         <?php } ?>
 
@@ -152,7 +148,7 @@ $siparisler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
         </div>
 
-    <?php }else{ ?>
+    <?php } else { ?>
 
         <div class="alert alert-info">
 

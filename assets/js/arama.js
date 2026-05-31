@@ -1,17 +1,17 @@
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener("DOMContentLoaded", function () {
 
     const aramaInput = document.getElementById("aramaInput");
     const aramaSonuc = document.getElementById("aramaSonuc");
 
-    if(!aramaInput || !aramaSonuc){
+    if (!aramaInput || !aramaSonuc) {
         return;
     }
 
-    aramaInput.addEventListener("keyup", function(){
+    aramaInput.addEventListener("keyup", function () {
 
         let kelime = this.value.trim();
 
-        if(kelime === ""){
+        if (kelime === "") {
 
             aramaSonuc.innerHTML = "";
             aramaSonuc.style.display = "none";
@@ -24,30 +24,30 @@ window.addEventListener("DOMContentLoaded", function(){
             encodeURIComponent(kelime)
         )
 
-        .then(response => response.text())
+            .then(response => response.text())
 
-        .then(data => {
+            .then(data => {
 
-            aramaSonuc.innerHTML = data;
-            aramaSonuc.style.display = "block";
+                aramaSonuc.innerHTML = data;
+                aramaSonuc.style.display = "block";
 
-        })
+            })
 
-        .catch(error => {
+            .catch(error => {
 
-            console.log(error);
+                console.log(error);
 
-        });
+            });
 
     });
 
-    document.addEventListener("click", function(e){
+    document.addEventListener("click", function (e) {
 
-        if(
+        if (
             !aramaInput.contains(e.target)
             &&
             !aramaSonuc.contains(e.target)
-        ){
+        ) {
 
             aramaSonuc.style.display = "none";
 

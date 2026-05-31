@@ -29,8 +29,7 @@ include "../includes/menu.php";
                             class="accordion-button"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#soru1"
-                        >
+                            data-bs-target="#soru1">
 
                             Siparişim kaç günde teslim edilir?
 
@@ -41,8 +40,7 @@ include "../includes/menu.php";
                     <div
                         id="soru1"
                         class="accordion-collapse collapse show"
-                        data-bs-parent="#sssAccordion"
-                    >
+                        data-bs-parent="#sssAccordion">
 
                         <div class="accordion-body">
 
@@ -66,8 +64,7 @@ include "../includes/menu.php";
                             class="accordion-button collapsed"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#soru2"
-                        >
+                            data-bs-target="#soru2">
 
                             Ürün iadesi yapabilir miyim?
 
@@ -78,8 +75,7 @@ include "../includes/menu.php";
                     <div
                         id="soru2"
                         class="accordion-collapse collapse"
-                        data-bs-parent="#sssAccordion"
-                    >
+                        data-bs-parent="#sssAccordion">
 
                         <div class="accordion-body">
 
@@ -103,8 +99,7 @@ include "../includes/menu.php";
                             class="accordion-button collapsed"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#soru3"
-                        >
+                            data-bs-target="#soru3">
 
                             Hangi ödeme yöntemleri kabul ediliyor?
 
@@ -115,8 +110,7 @@ include "../includes/menu.php";
                     <div
                         id="soru3"
                         class="accordion-collapse collapse"
-                        data-bs-parent="#sssAccordion"
-                    >
+                        data-bs-parent="#sssAccordion">
 
                         <div class="accordion-body">
 
@@ -139,8 +133,7 @@ include "../includes/menu.php";
                             class="accordion-button collapsed"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#soru4"
-                        >
+                            data-bs-target="#soru4">
 
                             Siparişimi nasıl takip edebilirim?
 
@@ -151,8 +144,7 @@ include "../includes/menu.php";
                     <div
                         id="soru4"
                         class="accordion-collapse collapse"
-                        data-bs-parent="#sssAccordion"
-                    >
+                        data-bs-parent="#sssAccordion">
 
                         <div class="accordion-body">
 

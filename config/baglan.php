@@ -5,7 +5,7 @@ $veritabani = "kozmetik_magazasi";
 $kullanici = "root";
 $sifre = "";
 
-try{
+try {
 
     $db = new PDO(
         "mysql:host=$host;dbname=$veritabani;charset=utf8mb4",
@@ -14,9 +14,7 @@ try{
     );
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-}catch(PDOException $e){
+} catch (PDOException $e) {
 
     die("Veritabanı bağlantı hatası : " . $e->getMessage());
-
 }

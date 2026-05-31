@@ -47,8 +47,7 @@ $siparisler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
     <form
         action="toplu_siparis_guncelle.php"
-        method="POST"
-    >
+        method="POST">
 
         <div class="table-responsive">
 
@@ -62,8 +61,7 @@ $siparisler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                             <input
                                 type="checkbox"
-                                id="tumunuSec"
-                            >
+                                id="tumunuSec">
 
                         </th>
 
@@ -80,43 +78,38 @@ $siparisler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
                 <tbody>
 
-                    <?php foreach($siparisler as $siparis){ ?>
+                    <?php foreach ($siparisler as $siparis) { ?>
 
                         <?php
 
-$durum = mb_strtolower(
-    trim($siparis["siparis_durumu"]),
-    "UTF-8"
-);
+                        $durum = mb_strtolower(
+                            trim($siparis["siparis_durumu"]),
+                            "UTF-8"
+                        );
 
-$satirClass = "";
+                        $satirClass = "";
 
-if($durum == "teslim edildi"){
+                        if ($durum == "teslim edildi") {
 
-    $satirClass = "table-success";
+                            $satirClass = "table-success";
+                        } elseif ($durum == "kargoya verildi") {
 
-}elseif($durum == "kargoya verildi"){
+                            $satirClass = "table-primary";
+                        } elseif ($durum == "hazırlanıyor") {
 
-    $satirClass = "table-primary";
+                            $satirClass = "table-warning";
+                        }
 
+                        ?>
 
-}elseif($durum == "hazırlanıyor"){
-
-    $satirClass = "table-warning";
-
-}
-
-?>
-
-<tr class="<?= $satirClass ?>">
+                        <tr class="<?= $satirClass ?>">
 
                             <td>
 
                                 <input
                                     type="checkbox"
                                     name="siparisler[]"
-                                    value="<?= $siparis["siparis_id"] ?>"
-                                >
+                                    value="<?= $siparis["siparis_id"] ?>">
 
                             </td>
 
@@ -174,41 +167,36 @@ if($durum == "teslim edildi"){
 
                             <td>
 
-<?php
+                                <?php
 
-$durum = mb_strtolower(
-    trim($siparis["siparis_durumu"]),
-    "UTF-8"
-);
+                                $durum = mb_strtolower(
+                                    trim($siparis["siparis_durumu"]),
+                                    "UTF-8"
+                                );
 
-if($durum == "teslim edildi"){
+                                if ($durum == "teslim edildi") {
 
-    echo '<span class="badge bg-success">
+                                    echo '<span class="badge bg-success">
             Teslim Edildi
           </span>';
+                                } elseif ($durum == "kargoya verildi") {
 
-}elseif($durum == "kargoya verildi"){
-
-    echo '<span class="badge bg-primary">
+                                    echo '<span class="badge bg-primary">
             Kargoya Verildi
           </span>';
+                                } else {
 
-
-
-}else{
-
-    echo '<span class="badge bg-warning text-dark">
+                                    echo '<span class="badge bg-warning text-dark">
             Hazırlanıyor
           </span>';
+                                }
 
-}
+                                ?>
 
-?>
+                            </td>
 
-</td>
-                                
 
-                            
+
 
                             <!-- İşlem -->
 
@@ -216,8 +204,7 @@ if($durum == "teslim edildi"){
 
                                 <a
                                     href="siparis_detaylari.php?id=<?= $siparis["siparis_id"] ?>"
-                                    class="btn btn-dark btn-sm"
-                                >
+                                    class="btn btn-dark btn-sm">
 
                                     Detay
 
@@ -225,9 +212,9 @@ if($durum == "teslim edildi"){
 
                             </td>
 
-                        
 
-                    <?php } ?>
+
+                        <?php } ?>
 
                 </tbody>
 
@@ -242,8 +229,7 @@ if($durum == "teslim edildi"){
             <select
                 name="yeni_durum"
                 class="form-select"
-                style="max-width:250px;"
-            >
+                style="max-width:250px;">
 
                 <option value="Hazırlanıyor">
 
@@ -263,14 +249,13 @@ if($durum == "teslim edildi"){
 
                 </option>
 
-             
+
 
             </select>
 
             <button
                 type="submit"
-                class="btn btn-success"
-            >
+                class="btn btn-success">
 
                 Seçilenleri Güncelle
 
@@ -283,26 +268,22 @@ if($durum == "teslim edildi"){
 </div>
 
 <script>
-
-document
-.getElementById("tumunuSec")
-.addEventListener("change", function(){
-
     document
-    .querySelectorAll(
-        'input[name="siparisler[]"]'
-    )
-    .forEach(function(kutu){
-
-        kutu.checked =
-        document
         .getElementById("tumunuSec")
-        .checked;
+        .addEventListener("change", function() {
 
-    });
+            document
+                .querySelectorAll(
+                    'input[name="siparisler[]"]'
+                )
+                .forEach(function(kutu) {
 
-});
+                    kutu.checked =
+                        document
+                        .getElementById("tumunuSec")
+                        .checked;
 
+                });
+
+        });
 </script>
-
-<?php include "includes/footer.php"; ?>

@@ -9,10 +9,9 @@ include "includes/sidebar.php";
 
 // ID kontrolü
 
-if(!isset($_GET["id"])){
+if (!isset($_GET["id"])) {
 
     die("Ürün bulunamadı.");
-
 }
 
 $id = intval($_GET["id"]);
@@ -38,7 +37,7 @@ $kategoriler = $db->query("
 
 // Güncelleme
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $kategori_id =
         $_POST["kategori_id"];
@@ -60,11 +59,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Yeni resim seçildi mi?
 
-    if(
+    if (
         isset($_FILES["resim"])
         &&
         $_FILES["resim"]["name"] != ""
-    ){
+    ) {
 
         $resim =
             $_FILES["resim"];
@@ -86,7 +85,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $resim_url =
             "uploads/" .
             $resimAdi;
-
     }
 
     // Güncelle
@@ -126,195 +124,182 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sorgu->execute([$id]);
 
     $urun = $sorgu->fetch(PDO::FETCH_ASSOC);
-
 }
 
 ?>
 <div class="admin-content">
-<h2 class="fw-bold mb-4">
+    <h2 class="fw-bold mb-4">
 
-    Ürün Düzenle
+        Ürün Düzenle
 
-</h2>
+    </h2>
 
-<div class="card border-0 shadow">
+    <div class="card border-0 shadow">
 
-    <div class="card-body">
+        <div class="card-body">
 
-        <form
-            method="POST"
-            enctype="multipart/form-data"
-        >
+            <form
+                method="POST"
+                enctype="multipart/form-data">
 
-            <!-- Kategori -->
+                <!-- Kategori -->
 
-            <div class="mb-3">
+                <div class="mb-3">
 
-                <label class="form-label">
+                    <label class="form-label">
 
-                    Kategori
+                        Kategori
 
-                </label>
+                    </label>
 
-                <select
-                    name="kategori_id"
-                    class="form-select"
-                    required
-                >
+                    <select
+                        name="kategori_id"
+                        class="form-select"
+                        required>
 
-                    <?php foreach($kategoriler as $kategori){ ?>
+                        <?php foreach ($kategoriler as $kategori) { ?>
 
-                        <option
-                            value="<?= $kategori["kategori_id"] ?>"
+                            <option
+                                value="<?= $kategori["kategori_id"] ?>"
 
-                            <?= $urun["kategori_id"] == $kategori["kategori_id"] ? "selected" : "" ?>
-                        >
+                                <?= $urun["kategori_id"] == $kategori["kategori_id"] ? "selected" : "" ?>>
 
-                            <?= $kategori["kategori_adi"] ?>
+                                <?= $kategori["kategori_adi"] ?>
 
-                        </option>
+                            </option>
 
-                    <?php } ?>
+                        <?php } ?>
 
-                </select>
+                    </select>
 
-            </div>
+                </div>
 
-            <!-- Ürün Adı -->
+                <!-- Ürün Adı -->
 
-            <div class="mb-3">
+                <div class="mb-3">
 
-                <label class="form-label">
+                    <label class="form-label">
 
-                    Ürün Adı
+                        Ürün Adı
 
-                </label>
+                    </label>
 
-                <input
-                    type="text"
-                    name="urun_adi"
-                    class="form-control"
-                    value="<?= $urun["urun_adi"] ?>"
-                    required
-                >
+                    <input
+                        type="text"
+                        name="urun_adi"
+                        class="form-control"
+                        value="<?= $urun["urun_adi"] ?>"
+                        required>
 
-            </div>
+                </div>
 
-            <!-- Fiyat -->
+                <!-- Fiyat -->
 
-            <div class="mb-3">
+                <div class="mb-3">
 
-                <label class="form-label">
+                    <label class="form-label">
 
-                    Fiyat
+                        Fiyat
 
-                </label>
+                    </label>
 
-                <input
-                    type="number"
-                    name="fiyat"
-                    class="form-control"
-                    value="<?= $urun["fiyat"] ?>"
-                    required
-                >
+                    <input
+                        type="number"
+                        name="fiyat"
+                        class="form-control"
+                        value="<?= $urun["fiyat"] ?>"
+                        required>
 
-            </div>
+                </div>
 
-            <!-- Stok -->
+                <!-- Stok -->
 
-            <div class="mb-3">
+                <div class="mb-3">
 
-                <label class="form-label">
+                    <label class="form-label">
 
-                    Stok
+                        Stok
 
-                </label>
+                    </label>
 
-                <input
-                    type="number"
-                    name="stok"
-                    class="form-control"
-                    value="<?= $urun["stok"] ?>"
-                    required
-                >
+                    <input
+                        type="number"
+                        name="stok"
+                        class="form-control"
+                        value="<?= $urun["stok"] ?>"
+                        required>
 
-            </div>
+                </div>
 
-            <!-- Açıklama -->
+                <!-- Açıklama -->
 
-            <div class="mb-3">
+                <div class="mb-3">
 
-                <label class="form-label">
+                    <label class="form-label">
 
-                    Açıklama
+                        Açıklama
 
-                </label>
+                    </label>
 
-                <textarea
-                    name="aciklama"
-                    class="form-control"
-                    rows="5"
-                ><?= $urun["aciklama"] ?></textarea>
+                    <textarea
+                        name="aciklama"
+                        class="form-control"
+                        rows="5"><?= $urun["aciklama"] ?></textarea>
 
-            </div>
+                </div>
 
-            <!-- Mevcut Resim -->
+                <!-- Mevcut Resim -->
 
-            <div class="mb-3">
+                <div class="mb-3">
 
-                <label class="form-label">
+                    <label class="form-label">
 
-                    Mevcut Resim
+                        Mevcut Resim
 
-                </label>
+                    </label>
 
-                <br>
+                    <br>
 
-                <img
-                    src="../<?= $urun["resim_url"] ?>"
-                    style="
+                    <img
+                        src="../<?= $urun["resim_url"] ?>"
+                        style="
                         width:120px;
                         height:120px;
                         object-fit:cover;
                     "
-                    class="rounded shadow"
-                >
+                        class="rounded shadow">
 
-            </div>
+                </div>
 
-            <!-- Yeni Resim -->
+                <!-- Yeni Resim -->
 
-            <div class="mb-4">
+                <div class="mb-4">
 
-                <label class="form-label">
+                    <label class="form-label">
 
-                    Yeni Resim Seç
+                        Yeni Resim Seç
 
-                </label>
+                    </label>
 
-                <input
-                    type="file"
-                    name="resim"
-                    class="form-control"
-                >
+                    <input
+                        type="file"
+                        name="resim"
+                        class="form-control">
 
-            </div>
+                </div>
 
-            <!-- Buton -->
+                <!-- Buton -->
 
-            <button
-                class="btn btn-dark"
-            >
+                <button
+                    class="btn btn-dark">
 
-                Güncelle
+                    Güncelle
 
-            </button>
+                </button>
 
-        </form>
+            </form>
+
+        </div>
 
     </div>
-
 </div>
-</div>
-
-<?php include "includes/footer.php"; ?>

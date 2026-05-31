@@ -4,6 +4,7 @@ include "session.php";
 
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 
     <meta charset="UTF-8">
@@ -23,5 +24,5 @@ include "session.php";
 </head>
 
 <body>
-<div class="site-content">
+    <div class="site-content">
 </body>

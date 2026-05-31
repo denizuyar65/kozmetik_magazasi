@@ -4,11 +4,10 @@ include "../includes/header.php";
 include "../includes/menu.php";
 
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: giris.php");
     exit;
-
 }
 $kullanici_id = $_SESSION["kullanici_id"];
 
@@ -98,122 +97,116 @@ $adres =
 
                     </h4>
 
-                    <?php if(count($sonSiparisler)>0){ ?>
+                    <?php if (count($sonSiparisler) > 0) { ?>
 
-                        <?php foreach($sonSiparisler as $siparis){ ?>
-<div class="card mb-3 border-0 shadow-sm">
+                        <?php foreach ($sonSiparisler as $siparis) { ?>
+                            <div class="card mb-3 border-0 shadow-sm">
 
-    <div class="card-body">
+                                <div class="card-body">
 
-        <div class="row align-items-center">
+                                    <div class="row align-items-center">
 
-            <div class="col-md-2">
+                                        <div class="col-md-2">
 
-                <img
-                    src="../<?= $siparis["resim_url"] ?>"
-                    class="img-fluid rounded"
-                    style="
+                                            <img
+                                                src="../<?= $siparis["resim_url"] ?>"
+                                                class="img-fluid rounded"
+                                                style="
                         width:90px;
                         height:90px;
                         object-fit:cover;
-                    "
-                >
+                    ">
 
-            </div>
+                                        </div>
 
-            <div class="col-md-5">
+                                        <div class="col-md-5">
 
-                <h6 class="fw-bold mb-2">
+                                            <h6 class="fw-bold mb-2">
 
-                    <?= htmlspecialchars($siparis["urun_adi"]) ?>
+                                                <?= htmlspecialchars($siparis["urun_adi"]) ?>
 
-                </h6>
+                                            </h6>
 
-                <small class="text-muted">
+                                            <small class="text-muted">
 
-                    <?= date(
-                        "d.m.Y",
-                        strtotime(
-                            $siparis["olusturma_tarihi"]
-                        )
-                    ) ?>
+                                                <?= date(
+                                                    "d.m.Y",
+                                                    strtotime(
+                                                        $siparis["olusturma_tarihi"]
+                                                    )
+                                                ) ?>
 
-                </small>
+                                            </small>
 
-                <br>
+                                            <br>
 
-                <small>
+                                            <small>
 
-                    Adet:
-                    <?= $siparis["adet"] ?>
+                                                Adet:
+                                                <?= $siparis["adet"] ?>
 
-                </small>
+                                            </small>
 
-            </div>
+                                        </div>
 
-            <div class="col-md-2 text-center">
+                                        <div class="col-md-2 text-center">
 
-               <strong>
+                                            <strong>
 
-    ₺<?= number_format(
-        $siparis["birim_fiyat"] * $siparis["adet"],
-        2,
-        ",",
-        "."
-    ) ?>
+                                                ₺<?= number_format(
+                                                        $siparis["birim_fiyat"] * $siparis["adet"],
+                                                        2,
+                                                        ",",
+                                                        "."
+                                                    ) ?>
 
-</strong>
+                                            </strong>
 
-            </div>
+                                        </div>
 
-            <div class="col-md-3 text-end">
+                                        <div class="col-md-3 text-end">
 
-                <?php
+                                            <?php
 
-                if(
-                    $siparis["siparis_durumu"]
-                    == "teslim edildi"
-                ){
+                                            if (
+                                                $siparis["siparis_durumu"]
+                                                == "teslim edildi"
+                                            ) {
 
-                    echo '
+                                                echo '
                     <span class="badge bg-success">
                         Teslim Edildi
                     </span>';
+                                            } elseif (
+                                                $siparis["siparis_durumu"]
+                                                == "kargoya verildi"
+                                            ) {
 
-                }
-                elseif(
-                    $siparis["siparis_durumu"]
-                    == "kargoya verildi"
-                ){
-
-                    echo '
+                                                echo '
                     <span class="badge bg-primary">
                         Kargoda
                     </span>';
+                                            } else {
 
-                }
-                else{
-
-                    echo '
+                                                echo '
                     <span class="badge bg-warning text-dark">
                         Hazırlanıyor
                     </span>';
+                                            }
 
-                }
+                                            ?>
 
-                ?>
+                                        </div>
 
-            </div>
+                                    </div>
 
-        </div>
+                                </div>
 
-    </div>
-
-</div>
+                            </div>
 
                         <?php } ?>
 
-                    <?php }else{ ?>
+                    <?php } else { ?>
 
                         <div class="alert alert-info">
 
@@ -243,7 +236,7 @@ $adres =
 
                     </h4>
 
-                    <?php if($adres){ ?>
+                    <?php if ($adres) { ?>
 
                         <div class="mb-2">
 
@@ -269,7 +262,7 @@ $adres =
 
                         </div>
 
-                    <?php }else{ ?>
+                    <?php } else { ?>
 
                         <div class="alert alert-warning">
 
@@ -281,8 +274,7 @@ $adres =
 
                     <a
                         href="adreslerim.php"
-                        class="btn btn-outline-dark mt-3"
-                    >
+                        class="btn btn-outline-dark mt-3">
 
                         Adresleri Yönet
 
@@ -296,8 +288,7 @@ $adres =
 
                 <a
                     href="cikis.php"
-                    class="btn btn-danger w-100"
-                >
+                    class="btn btn-danger w-100">
 
                     🚪 Çıkış Yap
 

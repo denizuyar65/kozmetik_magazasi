@@ -8,10 +8,9 @@ include "../includes/menu.php";
 
 // Alt kategori kontrolü
 
-if(!isset($_GET["alt_kategori_id"])){
+if (!isset($_GET["alt_kategori_id"])) {
 
     die("Kategori bulunamadı.");
-
 }
 
 $alt_kategori_id =
@@ -38,9 +37,9 @@ $urunler =
 
     <div class="row g-4">
 
-        <?php if(count($urunler) > 0){ ?>
+        <?php if (count($urunler) > 0) { ?>
 
-            <?php foreach($urunler as $urun){ ?>
+            <?php foreach ($urunler as $urun) { ?>
 
                 <div class="col-md-3">
 
@@ -49,8 +48,7 @@ $urunler =
                         <!-- Ürün Resmi -->
 
                         <a
-                            href="urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                        >
+                            href="urun_detay.php?id=<?= $urun["urun_id"] ?>">
 
                             <img
                                 src="../<?= $urun["resim_url"] ?>"
@@ -58,8 +56,7 @@ $urunler =
                                 style="
                                     height:250px;
                                     object-fit:cover;
-                                "
-                            >
+                                ">
 
                         </a>
 
@@ -71,8 +68,7 @@ $urunler =
 
                                 <a
                                     href="urun_detay.php?id=<?= $urun["urun_id"] ?>"
-                                    class="text-dark text-decoration-none"
-                                >
+                                    class="text-dark text-decoration-none">
 
                                     <?= htmlspecialchars($urun["urun_adi"]) ?>
 
@@ -104,8 +100,7 @@ $urunler =
 
                                 <a
                                     href="../ajax/sepete_ekle.php?urun_id=<?= $urun["urun_id"] ?>"
-                                    class="btn btn-dark"
-                                >
+                                    class="btn btn-dark">
 
                                     Sepete Ekle
 
@@ -117,7 +112,7 @@ $urunler =
 
                                 $favoriKontrol = false;
 
-                                if(isset($_SESSION["kullanici_id"])){
+                                if (isset($_SESSION["kullanici_id"])) {
 
                                     $favSorgu = $db->prepare("
                                         SELECT *
@@ -131,22 +126,19 @@ $urunler =
                                         $urun["urun_id"]
                                     ]);
 
-                                    if($favSorgu->rowCount() > 0){
+                                    if ($favSorgu->rowCount() > 0) {
 
                                         $favoriKontrol = true;
-
                                     }
-
                                 }
 
                                 ?>
 
-                                <?php if($favoriKontrol){ ?>
+                                <?php if ($favoriKontrol) { ?>
 
                                     <a
                                         href="../ajax/favori_sil.php?urun_id=<?= $urun["urun_id"] ?>"
-                                        class="btn btn-danger"
-                                    >
+                                        class="btn btn-danger">
 
                                         <i class="bi bi-heart-fill"></i>
 
@@ -154,12 +146,11 @@ $urunler =
 
                                     </a>
 
-                                <?php }else{ ?>
+                                <?php } else { ?>
 
                                     <a
                                         href="../ajax/favori_ekle.php?urun_id=<?= $urun["urun_id"] ?>"
-                                        class="btn btn-outline-danger"
-                                    >
+                                        class="btn btn-outline-danger">
 
                                         <i class="bi bi-heart"></i>
 
@@ -179,7 +170,7 @@ $urunler =
 
             <?php } ?>
 
-        <?php }else{ ?>
+        <?php } else { ?>
 
             <div class="alert alert-warning">
 

@@ -7,11 +7,10 @@ session_start();
 
 // Admin giriş yapmamışsa login'e gönder
 
-if(!isset($_SESSION["admin"])){
+if (!isset($_SESSION["admin"])) {
 
     header("Location: giris.php");
     exit;
-
 }
 
 header("Location: dashboard.php");

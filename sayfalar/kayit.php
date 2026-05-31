@@ -6,7 +6,7 @@ include "../includes/header.php";
 
 $mesaj = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $ad = trim($_POST["ad"]);
     $soyad = trim($_POST["soyad"]);
@@ -15,16 +15,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sifre = trim($_POST["sifre"]);
 
     // Boş kontrolü
-    if(
+    if (
         empty($ad) ||
         empty($soyad) ||
         empty($email) ||
         empty($sifre)
-    ){
+    ) {
 
         $mesaj = "Lütfen tüm alanları doldurun.";
-
-    }else{
+    } else {
 
         // Email kontrolü
         $kontrol = $db->prepare(
@@ -33,11 +32,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $kontrol->execute([$email]);
 
-        if($kontrol->rowCount() > 0){
+        if ($kontrol->rowCount() > 0) {
 
             $mesaj = "Bu email zaten kayıtlı.";
-
-        }else{
+        } else {
 
             // Şifre hashleme
             $hashliSifre = password_hash(
@@ -66,20 +64,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $hashliSifre
             ]);
             $mesaj = "Kayıt başarılı.";
-                   $kullanici_id = $db->lastInsertId();
+            $kullanici_id = $db->lastInsertId();
 
-                  $_SESSION["kullanici_id"] = $kullanici_id;
-                  $_SESSION["ad"] = $ad;
-                  $_SESSION["soyad"] = $soyad;
-           
-                  header("Location: ../index.php");
-                  exit;
-            
+            $_SESSION["kullanici_id"] = $kullanici_id;
+            $_SESSION["ad"] = $ad;
+            $_SESSION["soyad"] = $soyad;
 
+            header("Location: ../index.php");
+            exit;
         }
-
     }
-
 }
 
 ?>
@@ -98,75 +92,69 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         Kayıt Ol
                     </h2>
 
-                    <?php if($mesaj != ""){ ?>
+                    <?php if ($mesaj != "") { ?>
 
                         <div class="alert alert-info">
                             <?= $mesaj ?>
                         </div>
 
                     <?php } ?>
-                     <div
-    class="card border-0 shadow-lg mb-4"
-    style="
+                    <div
+                        class="card border-0 shadow-lg mb-4"
+                        style="
         background:linear-gradient(135deg,#ff6b6b,#ffb347);
         color:white;
         border-radius:20px;
-    "
->
+    ">
 
-    <div class="card-body text-center p-4">
+                        <div class="card-body text-center p-4">
 
-        <h2 class="fw-bold">
-            🎁 HOŞ GELDİN İNDİRİMİ
-        </h2>
+                            <h2 class="fw-bold">
+                                🎁 HOŞ GELDİN İNDİRİMİ
+                            </h2>
 
-        <h4>
-            Üyelere Özel %30 İndirim
-        </h4>
+                            <h4>
+                                Üyelere Özel %30 İndirim
+                            </h4>
 
-        <p class="mb-0">
-            Şimdi kayıt ol, ilk siparişinde avantajlı alışveriş yap.
-        </p>
+                            <p class="mb-0">
+                                Şimdi kayıt ol, ilk siparişinde avantajlı alışveriş yap.
+                            </p>
 
-    </div>
+                        </div>
 
-</div>
+                    </div>
                     <form method="POST">
 
                         <input
                             type="text"
                             name="ad"
                             class="form-control mb-3"
-                            placeholder="Ad"
-                        >
+                            placeholder="Ad">
 
                         <input
                             type="text"
                             name="soyad"
                             class="form-control mb-3"
-                            placeholder="Soyad"
-                        >
+                            placeholder="Soyad">
 
                         <input
                             type="email"
                             name="email"
                             class="form-control mb-3"
-                            placeholder="Email"
-                        >
+                            placeholder="Email">
 
                         <input
                             type="text"
                             name="telefon"
                             class="form-control mb-3"
-                            placeholder="Telefon"
-                        >
+                            placeholder="Telefon">
 
                         <input
                             type="password"
                             name="sifre"
                             class="form-control mb-3"
-                            placeholder="Şifre"
-                        >
+                            placeholder="Şifre">
 
                         <button class="btn btn-dark w-100">
                             Kayıt Ol

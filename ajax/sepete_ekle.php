@@ -4,11 +4,10 @@ include "../config/baglan.php";
 include "../includes/session.php";
 
 // Giriş kontrolü
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: ../sayfalar/giris.php");
     exit;
-
 }
 
 $kullanici_id = $_SESSION["kullanici_id"];
@@ -26,7 +25,7 @@ $sepetSorgu->execute([$kullanici_id]);
 $sepet = $sepetSorgu->fetch(PDO::FETCH_ASSOC);
 
 // Sepet yoksa oluştur
-if(!$sepet){
+if (!$sepet) {
 
     $olustur = $db->prepare("
         INSERT INTO sepet(kullanici_id)
@@ -36,11 +35,9 @@ if(!$sepet){
     $olustur->execute([$kullanici_id]);
 
     $sepet_id = $db->lastInsertId();
-
-}else{
+} else {
 
     $sepet_id = $sepet["sepet_id"];
-
 }
 
 // Ürün sepette var mı?
@@ -58,7 +55,7 @@ $kontrol->execute([
 $urun = $kontrol->fetch(PDO::FETCH_ASSOC);
 
 // Varsa adet artır
-if($urun){
+if ($urun) {
 
     $guncelle = $db->prepare("
         UPDATE sepet_detaylari
@@ -69,8 +66,7 @@ if($urun){
     $guncelle->execute([
         $urun["sepet_detay_id"]
     ]);
-
-}else{
+} else {
 
     // Yoksa ekle
     $ekle = $db->prepare("
@@ -88,7 +84,6 @@ if($urun){
         $sepet_id,
         $urun_id
     ]);
-
 }
 
 $_SESSION["basarili"] = "Ürün sepete eklendi.";

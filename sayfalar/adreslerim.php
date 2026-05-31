@@ -5,7 +5,7 @@ session_start();
 include "../config/baglan.php";
 include "../includes/header.php";
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: giris.php");
     exit;
@@ -36,8 +36,7 @@ $adresler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
         <a
             href="adres_ekle.php"
-            class="btn btn-dark"
-        >
+            class="btn btn-dark">
 
             + Yeni Adres
 
@@ -47,64 +46,62 @@ $adresler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="row g-4">
 
-        <?php foreach($adresler as $adres){ ?>
+        <?php foreach ($adresler as $adres) { ?>
 
-        <div class="col-md-6">
+            <div class="col-md-6">
 
-            <div class="card shadow border-0 h-100">
+                <div class="card shadow border-0 h-100">
 
-                <div class="card-body">
+                    <div class="card-body">
 
-                    <h5 class="fw-bold mb-3">
+                        <h5 class="fw-bold mb-3">
 
-                        <?= htmlspecialchars(
-                            $adres["il"]
-                        ) ?>
+                            <?= htmlspecialchars(
+                                $adres["il"]
+                            ) ?>
 
-                        /
+                            /
 
-                        <?= htmlspecialchars(
-                            $adres["ilce"]
-                        ) ?>
+                            <?= htmlspecialchars(
+                                $adres["ilce"]
+                            ) ?>
 
-                    </h5>
+                        </h5>
 
-                    <p class="text-muted">
+                        <p class="text-muted">
 
-                        <?= htmlspecialchars(
-                            $adres["adres_detay"]
-                        ) ?>
+                            <?= htmlspecialchars(
+                                $adres["adres_detay"]
+                            ) ?>
 
-                    </p>
+                        </p>
 
-                    <div class="mt-3">
+                        <div class="mt-3">
 
-                        <a
-                            href="adres_duzenle.php?id=<?= $adres["adres_id"] ?>"
-                            class="btn btn-primary btn-sm"
-                        >
+                            <a
+                                href="adres_duzenle.php?id=<?= $adres["adres_id"] ?>"
+                                class="btn btn-primary btn-sm">
 
-                            Düzenle
+                                Düzenle
 
-                        </a>
+                            </a>
 
-                        <a
-                            href="adres_sil.php?id=<?= $adres["adres_id"] ?>"
-                            class="btn btn-danger btn-sm"
-                            onclick="return confirm('Adres silinsin mi?')"
-                        >
+                            <a
+                                href="adres_sil.php?id=<?= $adres["adres_id"] ?>"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('Adres silinsin mi?')">
 
-                            Sil
+                                Sil
 
-                        </a>
+                            </a>
+
+                        </div>
 
                     </div>
 
                 </div>
 
             </div>
-
-        </div>
 
         <?php } ?>
 

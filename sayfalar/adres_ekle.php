@@ -5,16 +5,15 @@ include "../includes/session.php";
 include "../includes/header.php";
 include "../includes/menu.php";
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
 
     header("Location: giris.php");
     exit;
-
 }
 
 $mesaj = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $kullanici_id = $_SESSION["kullanici_id"];
 
@@ -22,19 +21,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $ilce = trim($_POST["ilce"]);
     $acik_adres = trim($_POST["acik_adres"]);
 
-    if(
+    if (
         empty($sehir) ||
         empty($ilce) ||
         empty($acik_adres)
-    ){
+    ) {
 
         $mesaj = "
             <div class='alert alert-danger'>
                 Tüm alanları doldurun.
             </div>
         ";
-
-    }else{
+    } else {
 
         $ekle = $db->prepare("
             INSERT INTO adresler
@@ -54,9 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 Adres başarıyla eklendi.
             </div>
         ";
-
     }
-
 }
 
 ?>
@@ -83,26 +79,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             type="text"
                             name="sehir"
                             class="form-control mb-3"
-                            placeholder="Şehir"
-                        >
+                            placeholder="Şehir">
 
                         <input
                             type="text"
                             name="ilce"
                             class="form-control mb-3"
-                            placeholder="İlçe"
-                        >
+                            placeholder="İlçe">
 
                         <textarea
                             name="acik_adres"
                             class="form-control mb-3"
                             rows="4"
-                            placeholder="Açık Adres"
-                        ></textarea>
+                            placeholder="Açık Adres"></textarea>
 
                         <button
-                            class="btn btn-dark w-100"
-                        >
+                            class="btn btn-dark w-100">
 
                             Adresi Kaydet
 

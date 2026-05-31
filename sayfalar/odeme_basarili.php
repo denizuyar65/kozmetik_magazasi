@@ -4,7 +4,7 @@ include "../config/baglan.php";
 include "../includes/header.php";
 include "../includes/menu.php";
 
-if(!isset($_SESSION["kullanici_id"])){
+if (!isset($_SESSION["kullanici_id"])) {
     header("Location: giris.php");
     exit;
 }
@@ -28,7 +28,7 @@ $sorgu = $db->prepare("
 $sorgu->execute([$kullanici_id]);
 $urunler = $sorgu->fetchAll(PDO::FETCH_ASSOC);
 
-if(count($urunler) == 0){
+if (count($urunler) == 0) {
     echo "<div class='container mt-5'><div class='alert alert-info'>Sepet boş</div></div>";
     include "../includes/footer.php";
     exit;
@@ -36,22 +36,22 @@ if(count($urunler) == 0){
 
 $toplam = 0;
 
-foreach($urunler as $u){
+foreach ($urunler as $u) {
     $toplam += $u["fiyat"] * $u["adet"];
 }
 
 $mesaj = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $kart_isim = trim($_POST["kart_isim"]);
     $kart_no = trim($_POST["kart_no"]);
     $sk_t = trim($_POST["sk_t"]);
     $cvv = trim($_POST["cvv"]);
 
-    if(empty($kart_isim) || empty($kart_no) || empty($sk_t) || empty($cvv)){
+    if (empty($kart_isim) || empty($kart_no) || empty($sk_t) || empty($cvv)) {
         $mesaj = "Tüm alanları doldurun.";
-    }else{
+    } else {
 
         // 1. Sipariş oluştur
         $siparis = $db->prepare("
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $siparis_id = $db->lastInsertId();
 
         // 2. Sipariş detaylarını ekle + stok düş
-        foreach($urunler as $u){
+        foreach ($urunler as $u) {
 
             $detay = $db->prepare("
                 INSERT INTO siparis_detaylari
@@ -113,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <h4 class="mb-4">Toplam: ₺<?= $toplam ?></h4>
 
-    <?php if($mesaj != ""): ?>
+    <?php if ($mesaj != ""): ?>
         <div class="alert alert-danger"><?= $mesaj ?></div>
     <?php endif; ?>
 

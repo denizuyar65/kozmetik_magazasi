@@ -4,7 +4,7 @@ session_start();
 
 include "../config/baglan.php";
 
-if(isset($_GET["id"])){
+if (isset($_GET["id"])) {
 
     $id = intval($_GET["id"]);
 
@@ -14,10 +14,8 @@ if(isset($_GET["id"])){
     ");
 
     $sil->execute([$id]);
-
 }
 
 header("Location: /kozmetik_magazasi/sayfalar/sepet.php");
 
 exit;
-?>
